@@ -1,0 +1,20 @@
+{
+  "app_title": "Articles App",
+
+
+  "articles": "Articles",
+  "article_details": "Article Details",
+  "live_chat": "Live Chat",
+  "gallery": "Gallery",
+  "wish_list": "Wish List",
+  "explore_online_news": "Explore Online News",
+
+
+  "service_not_available": "Sorry, service is not available",
+  "no_items": "There are no items available to be displayed",
+
+  "by": "By",
+  "try_again_later": "Have error new, try again later",
+
+  "open_website": "Open Website"
+}
