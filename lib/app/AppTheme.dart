@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 
+import 'package:admin_panel/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -354,9 +355,9 @@ class AppTheme {
     ),
   );
 
-  static const primary = Color(0xff3d63ff);
+  static const primary = primaryColor;
   static const backgroundColor = Colors.white;
-  static const scaffoldBackgroundColor = Colors.white;
+  static const scaffoldBackgroundColor = Colors.white70;
 
   //Color Themes
   static final ThemeData lightTheme = ThemeData(
@@ -392,7 +393,7 @@ class AppTheme {
     colorScheme: const ColorScheme.light(
       primary: primary,
       onPrimary: Colors.white,
-      primaryVariant: Color(0xff0055ff),
+      primaryVariant: primaryColor,
       secondary: lightColorTextAppBar,
       secondaryVariant: Color(0xff3cd278),
       onSecondary: Colors.white,

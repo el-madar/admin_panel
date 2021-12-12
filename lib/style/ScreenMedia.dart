@@ -1,5 +1,7 @@
 // ignore_for_file: file_names
 
+import 'package:flutter/material.dart';
+
 class ScreenMedia{
   static const GRID_COLUMNS = 24;
 
@@ -20,6 +22,16 @@ class ScreenMedia{
       return ScreenMediaType.XXXL;
     return ScreenMediaType.XXXXL;
   }
+
+  static bool isMobile(BuildContext context) =>
+      MediaQuery.of(context).size.width < 850;
+
+  static bool isTablet(BuildContext context) =>
+      MediaQuery.of(context).size.width < 1100 &&
+          MediaQuery.of(context).size.width >= 850;
+
+  static bool isDesktop(BuildContext context) =>
+      MediaQuery.of(context).size.width >= 1100;
 
   static int getSizeFromScreenMediaType(ScreenMediaType? screenMediaType){
     switch(screenMediaType){

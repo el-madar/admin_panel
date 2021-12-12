@@ -15,6 +15,7 @@ void main() async {
     ),
     supportedLocales: const [
       Locale('en', 'US'),
+      Locale('ae', 'DZ'),
     ],
     startLocale: const Locale('en', 'US'),
     path: 'assets/language',

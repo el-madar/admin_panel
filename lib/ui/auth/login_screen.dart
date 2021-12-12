@@ -1,204 +1,175 @@
-import 'package:admin_panel/app/AppTheme.dart';
-import 'package:admin_panel/style/MyCard.dart';
-import 'package:admin_panel/style/MyCol.dart';
-import 'package:admin_panel/style/MyRow.dart';
-import 'package:admin_panel/style/ScreenMedia.dart';
-import 'package:admin_panel/utils/SizeConfig.dart';
-import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'dart:io';
 
-class LoginScreen extends StatelessWidget {
+import 'package:admin_panel/style/MyCard.dart';
+import 'package:admin_panel/style/ScreenMedia.dart';
+import 'package:admin_panel/utils/colors.dart';
+import 'package:admin_panel/utils/constants.dart';
+import 'package:admin_panel/utils/validation.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+
+
+
+class LoginScreen extends StatefulWidget {
+
+  const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+
+  final GlobalKey<FormState> _formKey = GlobalKey();
+
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    ThemeData themeData = Theme.of(context);
-
-    return Scaffold(
-        body: Container(
-      margin: Spacing.x(16),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          MyRow(
-            wrapAlignment: WrapAlignment.center,
-            children: [
-              MyCol(
-                flex: const {
-                  ScreenMediaType.SM: 16,
-                  ScreenMediaType.MD: 12,
-                  ScreenMediaType.XL: 10,
-                  ScreenMediaType.XXL: 8,
-                  ScreenMediaType.XXXL: 6,
-                },
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Text(
-                      "Log In",
-                      style: AppTheme.getTextStyle(
-                        themeData.textTheme.headline5!,
-                        fontWeight: 700,
-                      ),
+    return  Scaffold(
+      body: Center(
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Text(
+                    tr('login'),
+                    style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                        fontSize: bigFont
                     ),
-                    Spacing.height(40),
-                    Text(
-                      "Enter your login details to access your account",
-                      softWrap: true,
-                      style: AppTheme.getTextStyle(
-                          themeData.textTheme.bodyText1!,
-                          fontWeight: 500,
-                          height: 1.2,
-                          color: themeData.colorScheme.onBackground
-                              .withAlpha(200)),
-                      textAlign: TextAlign.center,
-                    ),
-                    Spacing.height(40),
-                    MyCard(
-                      paddingAll: 0,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          TextFormField(
-                            style: AppTheme.getTextStyle(
-                              themeData.textTheme.bodyText1!,
-                              fontWeight: 600,
-                              letterSpacing: 0.2,
-                            ),
-                            decoration: InputDecoration(
-                              hintStyle: AppTheme.getTextStyle(
-                                themeData.textTheme.bodyText1!,
-                                fontWeight: 500,
-                                letterSpacing: 0,
-                                color: themeData.colorScheme.onBackground
-                                    .withAlpha(180),
-                              ),
-                              hintText: "Email Address",
-                              border: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              isDense: true,
-                              contentPadding: Spacing.all(16),
-                            ),
-                            autofocus: false,
-                            keyboardType: TextInputType.emailAddress,
-                            controller:
-                                TextEditingController(text: "denio@gmail.com"),
-                          ),
-                          Divider(
-                            color: themeData.dividerColor,
-                            height: 0.5,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: TextFormField(
-                                  style: AppTheme.getTextStyle(
-                                    themeData.textTheme.bodyText1!,
-                                    fontWeight: 600,
-                                    letterSpacing: 0.2,
-                                  ),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    width: ScreenMedia.isMobile(context) ? double.infinity : 500,
+                    child: Padding(
+                      padding: const EdgeInsets.all(bigPadding),
+                      child: MyCard(
+                        borderRadius: BorderRadius.circular(30.0),
+                        child: Form(
+                          key: _formKey,
+                          child: Padding(
+                            padding: const EdgeInsets.all(bigPadding),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const SizedBox(height: defaultPadding,),
+                                TextFormField(
+                                  controller: _emailController,
+                                  keyboardType: TextInputType.emailAddress,
+                                  textInputAction: TextInputAction.next,
+                                  // style: TextStyle(
+                                  //   color: Colors.black,
+                                  //   fontFamily: 'OpenSans',
+                                  // ),
                                   decoration: InputDecoration(
-                                    hintStyle: AppTheme.getTextStyle(
-                                      themeData.textTheme.bodyText1!,
-                                      fontWeight: 500,
-                                      letterSpacing: 0,
-                                      color: themeData.colorScheme.onBackground
-                                          .withAlpha(180),
+                                    prefixIcon: const Icon(
+                                      Icons.email,
+                                      color: primaryColor,
                                     ),
-                                    hintText: "Your Password",
-                                    border: InputBorder.none,
-                                    enabledBorder: InputBorder.none,
-                                    focusedBorder: InputBorder.none,
-                                    isDense: true,
-                                    contentPadding: Spacing.all(16),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    labelText: tr('email'),
+                                    // labelStyle: TextStyle(
+                                    //   color: Colors.black26,
+                                    //   fontFamily: 'OpenSans',
+                                    // ),
+//            prefixIcon: const Icon(Icons.person),
                                   ),
-                                  autofocus: false,
-                                  textInputAction: TextInputAction.search,
-                                  textCapitalization:
-                                      TextCapitalization.sentences,
+                                  validator: (value) => isValidEmail(value!)
+                                      ? null
+                                      : tr('invalid_email'),
+                                ),
+                                const SizedBox(height: defaultPadding),
+                                TextFormField(
+                                  controller: _passwordController,
                                   obscureText: true,
+                                  keyboardType: TextInputType.visiblePassword,
+                                  textInputAction: TextInputAction.done,
+                                  // style: TextStyle(
+                                  //   color: Colors.black,
+                                  //   fontFamily: 'OpenSans',
+                                  // ),
+                                  decoration: InputDecoration(
+                                    prefixIcon: const Icon(
+                                      Icons.lock,
+                                      color: primaryColor,
+                                    ),
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    labelText: tr('password'),
+                                    // labelStyle: TextStyle(
+                                    //   color: Colors.black26,
+                                    //   fontFamily: 'OpenSans',
+                                    // ),
+//            prefixIcon: const Icon(Icons.lock),
+                                  ),
+                                  validator: (value) => isValidPassword(value!)
+                                      ? null
+                                      : tr('invalid_password'),
                                 ),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (context) =>
-                                  //         ShoppingPasswordScreen(),
-                                  //   ),
-                                  // );
-                                },
-                                style: ButtonStyle(),
-                                child: Text(
-                                  "FORGOT",
-                                  style: AppTheme.getTextStyle(
-                                    themeData.textTheme.bodyText2!,
-                                    letterSpacing: 0.3,
-                                    color: themeData.colorScheme.onBackground,
-                                    xMuted: true,
-                                    fontWeight: 700,
+                                const SizedBox(height: smallPadding),
+                                Align(
+                                  alignment: tr('current_language') == "ar" ? Alignment.centerRight : Alignment.centerLeft,
+                                  child: TextButton(
+                                    child: Text(tr('forget_passwords')),
+                                    onPressed: () {
+
+                                    },
+                                  )
+                                ),
+                                const SizedBox(height: smallPadding),
+                                SizedBox(
+                                  width: 200,
+                                  child: MaterialButton(
+                                    elevation: 5.0,
+                                    color: accentColor,
+                                    onPressed: () {
+                                      onFormSubmitted();
+                                    },
+                                    padding: EdgeInsets.all(defaultPadding),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                    child: false ? const CircularProgressIndicator() : Text(
+                                      tr('login'),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Spacing.width(16)
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                    Spacing.height(40),
-                    ElevatedButton.icon(
-                      icon: Icon(
-                        MdiIcons.arrowRight,
-                        color: themeData.colorScheme.onPrimary,
-                        size: 18,
-                      ),
-                      label: Text(
-                        "CONTINUE",
-                        style: AppTheme.getTextStyle(
-                            themeData.textTheme.bodyText2!,
-                            color: themeData.colorScheme.onPrimary,
-                            letterSpacing: 0.8,
-                            fontWeight: 700),
-                      ),
-                      onPressed: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => ShoppingFullApp(),
-                        //   ),
-                        // );
-                      },
-                      style: ButtonStyle(
-                        padding: MaterialStateProperty.all(
-                          Spacing.xy(56, 16),
+                                const SizedBox(height: defaultPadding),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                    Spacing.height(8),
-                    TextButton(
-                        onPressed: () {
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => ShoppingRegisterScreen(),
-                          //   ),
-                          // );
-                        },
-                        child: Text(
-                          "I haven't an account",
-                          style: AppTheme.getTextStyle(
-                              themeData.textTheme.bodyText2!,
-                              decoration: TextDecoration.underline),
-                        ))
-                  ],
+                  ),
                 ),
-              )
-            ],
-          )
-        ],
+              ],
+            ),
+          ),
+        ),
       ),
-    ));
+    );
   }
+
+  onFormSubmitted() async {
+
+    // if (_formKey.currentState!.validate()) {
+    //  await Provider.of<MyAuth>(context, listen: false)
+    //       .login(
+    //       LoginRequest(
+    //           email:  _emailController.text.trim() ,
+    //           userPassword: _passwordController.text
+    //       )
+    //   );
+    // }
+  }
+
 }

@@ -1,4 +1,5 @@
 import 'package:admin_panel/app/AppNotifier.dart';
+import 'package:admin_panel/ui/auth/login_screen.dart';
 import 'package:admin_panel/ui/main/main_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
@@ -37,7 +38,7 @@ class _MyAppState extends State<MyApp> {
             themeMode: value.themeMode(),
             darkTheme: AppTheme.darkTheme,
             theme: AppTheme.lightTheme,
-            home: MainScreen(),
+            home: const LoginScreen(),
           );
         },
     );

@@ -45,4 +45,35 @@ class ApiProvider {
     }
   }
 
+  Future<dynamic> postRequestAPI({required String url,required String body,required Map<String, String> headers}) async {
+    headers.addAll({"Content-type":"application/json"});
+
+    try {
+      final response = await http.post(Uri.parse(url),body: body,headers: headers);
+
+      dynamic data = json.decode(response.body);
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return data['data'];
+      } else {
+        throw MyException(
+          message: data['data'][0],
+          error: response.statusCode,
+        );
+      }
+    } on TimeoutException catch (e) {
+      print(e.message);
+      throw MyException(
+        message: tr('an_error_occurred_please_try_again'),
+        error: 101,
+      );
+    } on SocketException catch (e) {
+      print(e.message);
+      throw MyException(
+        message: tr('please_check_internet_connection'),
+        error: 102,
+      );
+    }
+  }
+
 }

@@ -1,20 +1,28 @@
 {
-  "app_title": "Articles App",
+  "app_title": "garson Admin panel",
 
 
-  "articles": "Articles",
-  "article_details": "Article Details",
-  "live_chat": "Live Chat",
-  "gallery": "Gallery",
-  "wish_list": "Wish List",
-  "explore_online_news": "Explore Online News",
-
-
-  "service_not_available": "Sorry, service is not available",
-  "no_items": "There are no items available to be displayed",
-
-  "by": "By",
-  "try_again_later": "Have error new, try again later",
-
-  "open_website": "Open Website"
+  "enter_email": "Enter Email",
+  "email": "Email",
+  "enter_password": "enter_password",
+  "password": "password",
+  "login": "login",
+  "forget_passwords": "forget passwords",
+  "enter_full_name": "enter full name",
+  "full_name": "full name",
+  "enter_confirm_password": "enter confirm password",
+  "confirm_password": "confirm password",
+  "Do_not_have_an_account": "Do not have an account? ",
+  "signup": "SignUp",
+  "gender": "gender",
+  "forgot_password_message": "forgot password message",
+  "send": "send",
+  "male": "male",
+  "female": "female",
+  "invalid_phone": "invalid_phone",
+  "invalid_name": "invalid name",
+  "invalid_password": "invalid password",
+  "invalid_confirm_password": "invalid confirm password",
+  "home": "Home",
+  "invalid_email": "Invalid Email"
 }

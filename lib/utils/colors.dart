@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 const primaryColor = Colors.black;
 const primaryColorLight = Colors.black;
 const primaryColorDark = Colors.black;
-const accentColor = Colors.black;
+const accentColor = Colors.deepOrange;
 
 
 const backgroundColor = Colors.white;
