@@ -1,4 +1,5 @@
 import 'package:admin_panel/ui/articles/articles_screen.dart';
+import 'package:admin_panel/ui/drawer/drawer_model.dart';
 import 'package:admin_panel/ui/gallery/gallery_screen.dart';
 import 'package:admin_panel/ui/live_chat/live_chat_screen.dart';
 import 'package:admin_panel/ui/online_news/online_news.dart';
@@ -6,53 +7,51 @@ import 'package:admin_panel/ui/wish_list/wish_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class DrawerViewModel with ChangeNotifier {
-  int _index = 0;
   late ValueNotifier<bool> isExtended = ValueNotifier(false);
 
-  final screen = const [
-    ArticlesScreen(),
-    GalleryScreen(),
-    LiveChatScreen(),
-    WishListScreen(),
-    OnlineNewsScreen(),
-  ];
-  final titles = [
-    'articles',
-    'live_chat',
-    'gallery',
-    'wish_list',
-    'explore_online_news',
-  ];
-
-  List<NavigationRailDestination> rails = [
-    const NavigationRailDestination(
-      label: Text('home'),
-      icon: Icon(Icons.home),
+  final List<DrawerModel> screens = [
+    DrawerModel(
+      screen: const ArticlesScreen(),
+      icon: Icons.home,
+      title: 'articles',
+      index: 0,
     ),
-    const NavigationRailDestination(
-      label: Text('notifications'),
-      icon: Icon(Icons.notifications),
+    DrawerModel(
+      screen: const GalleryScreen(),
+      icon: Icons.home,
+      title: 'live_chat',
+      index: 1,
     ),
-    const NavigationRailDestination(
-      label: Text('person'),
-      icon: Icon(Icons.person),
+    DrawerModel(
+      screen: const OnlineNewsScreen(),
+      icon: Icons.home,
+      title: 'gallery',
+      index: 2,
     ),
-    const NavigationRailDestination(
-      label: Text(''),
-      icon: Icon(Icons.description),
+    DrawerModel(
+      screen: const LiveChatScreen(),
+      icon: Icons.home,
+      title: 'wish_list',
+      index: 3,
     ),
-    const NavigationRailDestination(
-      label: Text(''),
-      icon: Icon(Icons.directions),
+    DrawerModel(
+      screen: const WishListScreen(),
+      icon: Icons.home,
+      title: 'explore_online_news',
+      index: 4,
     ),
   ];
 
-  DrawerViewModel();
+  late DrawerModel _selected = screens.first;
 
-  int get index => _index;
+  DrawerViewModel() {
+    _selected = screens.first;
+  }
+
+  DrawerModel get selected => _selected;
 
   void editScreen(int index) {
-    _index = index;
+    _selected = screens[index];
     notifyListeners();
   }
 }

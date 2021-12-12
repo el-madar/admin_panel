@@ -1,6 +1,5 @@
 // ignore_for_file: file_names
 
-
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
@@ -8,20 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  static final int themeLight = 1;
-  static final int themeDark = 2;
-
-  
   AppTheme._();
-
-  static CustomAppTheme getCustomAppTheme(int themeMode) {
-    if (themeMode == themeLight) {
-      return CustomAppTheme.lightCustomAppTheme;
-    } else if (themeMode == themeDark) {
-      return CustomAppTheme.darkCustomAppTheme;
-    }
-    return CustomAppTheme.darkCustomAppTheme;
-  }
 
   static FontWeight _getFontWeight(int weight) {
     switch (weight) {
@@ -50,7 +36,7 @@ class AppTheme {
   static TextStyle getTextStyle(TextStyle textStyle,
       {int fontWeight = 500,
       bool muted = false,
-        bool xMuted =false,
+      bool xMuted = false,
       double letterSpacing = 0.15,
       Color? color,
       TextDecoration decoration = TextDecoration.none,
@@ -60,491 +46,532 @@ class AppTheme {
     double finalFontSize = fontSize ?? textStyle.fontSize!;
 
     Color finalColor;
-    if(color == null){
-      finalColor= xMuted ? textStyle.color!.withAlpha(160) : (muted ? textStyle.color!.withAlpha(200) : textStyle.color)!;
-    }else{
-      finalColor = xMuted ? color.withAlpha(160) : ( muted ? color.withAlpha(200) : color);
+    if (color == null) {
+      finalColor = xMuted
+          ? textStyle.color!.withAlpha(160)
+          : (muted ? textStyle.color!.withAlpha(200) : textStyle.color)!;
+    } else {
+      finalColor = xMuted
+          ? color.withAlpha(160)
+          : (muted ? color.withAlpha(200) : color);
     }
 
-
     return GoogleFonts.ibmPlexSans(
-        fontSize: finalFontSize,
-        fontWeight: _getFontWeight(fontWeight),
-        letterSpacing: letterSpacing,
-        color: finalColor,
-        decoration: decoration,
-        height: height,
-        wordSpacing: wordSpacing);
+      fontSize: finalFontSize,
+      fontWeight: _getFontWeight(fontWeight),
+      letterSpacing: letterSpacing,
+      color: finalColor,
+      decoration: decoration,
+      height: height,
+      wordSpacing: wordSpacing,
+    );
   }
 
+
+  static const lightColorTextAppBar = Color(0xff495057);
+  static const darkColorTextAppBar = Color(0xffffffff);
   //App Bar Text
   static final TextTheme lightAppBarTextTheme = TextTheme(
     headline1: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 102, color: Color(0xff495057))),
+      textStyle: const TextStyle(
+        fontSize: 102,
+        color: lightColorTextAppBar,
+      ),
+    ),
     headline2: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 64, color: Color(0xff495057))),
+      textStyle: const TextStyle(
+        fontSize: 64,
+        color: lightColorTextAppBar,
+      ),
+    ),
     headline3: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 51, color: Color(0xff495057))),
+      textStyle: const TextStyle(
+        fontSize: 51,
+        color: lightColorTextAppBar,
+      ),
+    ),
     headline4: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 36, color: Color(0xff495057))),
+      textStyle: const TextStyle(
+        fontSize: 36,
+        color: lightColorTextAppBar,
+      ),
+    ),
     headline5: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 25, color: Color(0xff495057))),
+        textStyle: const TextStyle(fontSize: 25, color: lightColorTextAppBar)),
     headline6: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 18, color: Color(0xff495057))),
+      textStyle: const TextStyle(
+        fontSize: 18,
+        color: lightColorTextAppBar,
+      ),
+    ),
     subtitle1: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 17, color: Color(0xff495057))),
+      textStyle: const TextStyle(
+        fontSize: 17,
+        color: lightColorTextAppBar,
+      ),
+    ),
     subtitle2: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 15, color: Color(0xff495057))),
+      textStyle: const TextStyle(
+        fontSize: 15,
+        color: lightColorTextAppBar,
+      ),
+    ),
     bodyText1: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 16, color: Color(0xff495057))),
+      textStyle: const TextStyle(
+        fontSize: 16,
+        color: lightColorTextAppBar,
+      ),
+    ),
     bodyText2: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 14, color: Color(0xff495057))),
+      textStyle: const TextStyle(
+        fontSize: 14,
+        color: lightColorTextAppBar,
+      ),
+    ),
     button: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 15, color: Color(0xff495057))),
+      textStyle: const TextStyle(
+        fontSize: 15,
+        color: lightColorTextAppBar,
+      ),
+    ),
     caption: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 13, color: Color(0xff495057))),
+      textStyle: const TextStyle(
+        fontSize: 13,
+        color: lightColorTextAppBar,
+      ),
+    ),
     overline: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 11, color: Color(0xff495057))),
+      textStyle: const TextStyle(
+        fontSize: 11,
+        color: lightColorTextAppBar,
+      ),
+    ),
   );
   static final TextTheme darkAppBarTextTheme = TextTheme(
     headline1: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 102, color: Color(0xffffffff))),
+      textStyle: const TextStyle(
+        fontSize: 102,
+        color: darkColorTextAppBar,
+      ),
+    ),
     headline2: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 64, color: Color(0xffffffff))),
+      textStyle: const TextStyle(
+        fontSize: 64,
+        color: darkColorTextAppBar,
+      ),
+    ),
     headline3: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 51, color: Color(0xffffffff))),
+      textStyle: const TextStyle(
+        fontSize: 51,
+        color: darkColorTextAppBar,
+      ),
+    ),
     headline4: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 36, color: Color(0xffffffff))),
+      textStyle: const TextStyle(
+        fontSize: 36,
+        color: darkColorTextAppBar,
+      ),
+    ),
     headline5: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 25, color: Color(0xffffffff))),
+      textStyle: const TextStyle(
+        fontSize: 25,
+        color: darkColorTextAppBar,
+      ),
+    ),
     headline6: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 20, color: Color(0xffffffff))),
+      textStyle: const TextStyle(
+        fontSize: 20,
+        color: darkColorTextAppBar,
+      ),
+    ),
     subtitle1: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 17, color: Color(0xffffffff))),
+      textStyle: const TextStyle(
+        fontSize: 17,
+        color: darkColorTextAppBar,
+      ),
+    ),
     subtitle2: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 15, color: Color(0xffffffff))),
+      textStyle: const TextStyle(
+        fontSize: 15,
+        color: darkColorTextAppBar,
+      ),
+    ),
     bodyText1: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 16, color: Color(0xffffffff))),
+      textStyle: const TextStyle(
+        fontSize: 16,
+        color: darkColorTextAppBar,
+      ),
+    ),
     bodyText2: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 14, color: Color(0xffffffff))),
+      textStyle: const TextStyle(
+        fontSize: 14,
+        color: darkColorTextAppBar,
+      ),
+    ),
     button: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 15, color: Color(0xffffffff))),
+      textStyle: const TextStyle(
+        fontSize: 15,
+        color: darkColorTextAppBar,
+      ),
+    ),
     caption: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 13, color: Color(0xffffffff))),
+      textStyle: const TextStyle(
+        fontSize: 13,
+        color: darkColorTextAppBar,
+      ),
+    ),
     overline: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 11, color: Color(0xffffffff))),
+      textStyle: const TextStyle(
+        fontSize: 11,
+        color: darkColorTextAppBar,
+      ),
+    ),
   );
 
+
+  static const lightColorText = Color(0xff4a4c4f);
+  static const darkColorText = Colors.white;
   //Text Themes
   static final TextTheme lightTextTheme = TextTheme(
     headline1: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 102, color: Color(0xff4a4c4f))),
+      textStyle: const TextStyle(
+        fontSize: 102,
+        color: lightColorText,
+      ),
+    ),
     headline2: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 64, color: Color(0xff4a4c4f))),
+      textStyle: const TextStyle(
+        fontSize: 64,
+        color: lightColorText,
+      ),
+    ),
     headline3: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 51, color: Color(0xff4a4c4f))),
+      textStyle: const TextStyle(
+        fontSize: 51,
+        color: lightColorText,
+      ),
+    ),
     headline4: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 36, color: Color(0xff4a4c4f))),
+      textStyle: const TextStyle(
+        fontSize: 36,
+        color: lightColorText,
+      ),
+    ),
     headline5: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 25, color: Color(0xff4a4c4f))),
+      textStyle: const TextStyle(
+        fontSize: 25,
+        color: lightColorText,
+      ),
+    ),
     headline6: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 18, color: Color(0xff4a4c4f))),
+      textStyle: const TextStyle(
+        fontSize: 18,
+        color: lightColorText,
+      ),
+    ),
     subtitle1: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 17, color: Color(0xff4a4c4f))),
+      textStyle: const TextStyle(
+        fontSize: 17,
+        color: lightColorText,
+      ),
+    ),
     subtitle2: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 15, color: Color(0xff4a4c4f))),
+      textStyle: const TextStyle(
+        fontSize: 15,
+        color: lightColorText,
+      ),
+    ),
     bodyText1: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 16, color: Color(0xff4a4c4f))),
+      textStyle: const TextStyle(
+        fontSize: 16,
+        color: lightColorText,
+      ),
+    ),
     bodyText2: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 14, color: Color(0xff4a4c4f))),
+      textStyle: const TextStyle(
+        fontSize: 14,
+        color: lightColorText,
+      ),
+    ),
     button: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 15, color: Color(0xff4a4c4f))),
+      textStyle: const TextStyle(
+        fontSize: 15,
+        color: lightColorText,
+      ),
+    ),
     caption: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 13, color: Color(0xff4a4c4f))),
+      textStyle: const TextStyle(
+        fontSize: 13,
+        color: lightColorText,
+      ),
+    ),
     overline: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 11, color: Color(0xff4a4c4f))),
+      textStyle: const TextStyle(
+        fontSize: 11,
+        color: lightColorText,
+      ),
+    ),
   );
-
   static final TextTheme darkTextTheme = TextTheme(
     headline1: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 102, color: Colors.white)),
+      textStyle: const TextStyle(fontSize: 102, color: darkColorText),
+    ),
     headline2: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 64, color: Colors.white)),
+      textStyle: const TextStyle(fontSize: 64, color: darkColorText),
+    ),
     headline3: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 51, color: Colors.white)),
+      textStyle: const TextStyle(fontSize: 51, color: darkColorText),
+    ),
     headline4: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 36, color: Colors.white)),
+      textStyle: const TextStyle(fontSize: 36, color: darkColorText),
+    ),
     headline5: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 25, color: Colors.white)),
+      textStyle: const TextStyle(fontSize: 25, color: darkColorText),
+    ),
     headline6: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 18, color: Colors.white)),
+      textStyle: const TextStyle(fontSize: 18, color: darkColorText),
+    ),
     subtitle1: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 17, color: Colors.white)),
+      textStyle: const TextStyle(fontSize: 17, color: darkColorText),
+    ),
     subtitle2: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 15, color: Colors.white)),
+      textStyle: const TextStyle(fontSize: 15, color: darkColorText),
+    ),
     bodyText1: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 16, color: Colors.white)),
+      textStyle: const TextStyle(fontSize: 16, color: darkColorText),
+    ),
     bodyText2: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 14, color: Colors.white)),
+      textStyle: const TextStyle(fontSize: 14, color: darkColorText),
+    ),
     button: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 15, color: Colors.white)),
+      textStyle: const TextStyle(fontSize: 15, color: darkColorText),
+    ),
     caption: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 13, color: Colors.white)),
+      textStyle: const TextStyle(fontSize: 13, color: darkColorText),
+    ),
     overline: GoogleFonts.ibmPlexSans(
-        textStyle: TextStyle(fontSize: 11, color: Colors.white)),
+      textStyle: const TextStyle(fontSize: 11, color: darkColorText),
+    ),
   );
+
+  static const primary = Color(0xff3d63ff);
+  static const backgroundColor = Colors.white;
+  static const scaffoldBackgroundColor = Colors.white;
 
   //Color Themes
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
-    primaryColor: Color(0xff496af1),
+    primaryColor: primary,
     canvasColor: Colors.transparent,
-    backgroundColor: Colors.white,
-    scaffoldBackgroundColor: Color(0xffffffff),
-    appBarTheme: AppBarTheme(
-      textTheme: lightAppBarTextTheme,
+    backgroundColor: backgroundColor,
+    scaffoldBackgroundColor: scaffoldBackgroundColor,
+    appBarTheme: const AppBarTheme(
+      // textTheme: lightAppBarTextTheme,
       actionsIconTheme: IconThemeData(
-        color: Color(0xff495057),
+        color: lightColorTextAppBar,
       ),
       color: Color(0xffffffff),
-      iconTheme: IconThemeData(color: Color(0xff495057), size: 24),
+      iconTheme: IconThemeData(color: lightColorTextAppBar, size: 24),
     ),
-    navigationRailTheme: NavigationRailThemeData(
-        selectedIconTheme:
-            IconThemeData(color: Color(0xff3d63ff), opacity: 1, size: 24),
-        unselectedIconTheme:
-            IconThemeData(color: Color(0xff495057), opacity: 1, size: 24),
-        backgroundColor: Color(0xffffffff),
-        elevation: 3,
-        selectedLabelTextStyle: TextStyle(color: Color(0xff3d63ff)),
-        unselectedLabelTextStyle: TextStyle(color: Color(0xff495057))),
-    colorScheme: ColorScheme.light(
-        primary: Color(0xff3d63ff),
-        onPrimary: Colors.white,
-        primaryVariant: Color(0xff0055ff),
-        secondary: Color(0xff495057),
-        secondaryVariant: Color(0xff3cd278),
-        onSecondary: Colors.white,
-        surface: Color(0xffe2e7f1),
-        background: Color(0xfff3f4f7),
-        onBackground: Color(0xff495057)),
+    navigationRailTheme: const NavigationRailThemeData(
+      selectedIconTheme: IconThemeData(
+        color: primary,
+        opacity: 1,
+        size: 24,
+      ),
+      unselectedIconTheme: IconThemeData(
+        color: lightColorTextAppBar,
+        opacity: 1,
+        size: 24,
+      ),
+      backgroundColor: Color(0xffffffff),
+      elevation: 3,
+      selectedLabelTextStyle: TextStyle(color: primary),
+      unselectedLabelTextStyle: TextStyle(color: lightColorTextAppBar),
+    ),
+    colorScheme: const ColorScheme.light(
+      primary: primary,
+      onPrimary: Colors.white,
+      primaryVariant: Color(0xff0055ff),
+      secondary: lightColorTextAppBar,
+      secondaryVariant: Color(0xff3cd278),
+      onSecondary: Colors.white,
+      surface: Color(0xffe2e7f1),
+      background: Color(0xfff3f4f7),
+      onBackground: lightColorTextAppBar,
+    ),
     cardTheme: CardTheme(
       color: Colors.white,
       shadowColor: Colors.black.withOpacity(0.4),
       elevation: 1,
-      margin: EdgeInsets.all(0),
+      margin: const EdgeInsets.all(0),
     ),
-    inputDecorationTheme: InputDecorationTheme(
+    inputDecorationTheme: const InputDecorationTheme(
       hintStyle: TextStyle(fontSize: 15, color: Color(0xaa495057)),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
-        borderSide: BorderSide(width: 1, color: Color(0xff3d63ff)),
+        borderSide: BorderSide(width: 1, color: primary),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(4)),
         borderSide: BorderSide(width: 1, color: Colors.black54),
       ),
       border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(4)),
-          borderSide: BorderSide(width: 1, color: Colors.black54)),
+        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderSide: BorderSide(width: 1, color: Colors.black54),
+      ),
     ),
     splashColor: Colors.white.withAlpha(100),
-    iconTheme: IconThemeData(
+    iconTheme: const IconThemeData(
       color: Colors.white,
     ),
     textTheme: lightTextTheme,
     indicatorColor: Colors.white,
-    disabledColor: Color(0xffdcc7ff),
+    disabledColor: const Color(0xffdcc7ff),
     highlightColor: Colors.white,
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: Color(0xff3d63ff),
+        backgroundColor: primary,
         splashColor: Colors.white.withAlpha(100),
         highlightElevation: 8,
         elevation: 4,
-        focusColor: Color(0xff3d63ff),
-        hoverColor: Color(0xff3d63ff),
+        focusColor: primary,
+        hoverColor: primary,
         foregroundColor: Colors.white),
-    dividerColor: Color(0xffd1d1d1),
-    errorColor: Color(0xfff0323c),
+    dividerColor: const Color(0xffd1d1d1),
+    errorColor: const Color(0xfff0323c),
     cardColor: Colors.white,
-    accentColor: Color(0xff3d63ff),
+    // accentColor: const primary,
     popupMenuTheme: PopupMenuThemeData(
-      color: Color(0xffffffff),
-      textStyle:
-          lightTextTheme.bodyText2!.merge(TextStyle(color: Color(0xff495057))),
+      color: const Color(0xffffffff),
+      textStyle: lightTextTheme.bodyText2!.merge(
+        const TextStyle(color: lightColorTextAppBar),
+      ),
     ),
-    bottomAppBarTheme:
-        BottomAppBarTheme(color: Color(0xffffffff), elevation: 2),
-    tabBarTheme: TabBarTheme(
-      unselectedLabelColor: Color(0xff495057),
-      labelColor: Color(0xff3d63ff),
+    bottomAppBarTheme: const BottomAppBarTheme(
+      color: Color(0xffffffff),
+      elevation: 2,
+    ),
+    tabBarTheme: const TabBarTheme(
+      unselectedLabelColor: lightColorTextAppBar,
+      labelColor: primary,
       indicatorSize: TabBarIndicatorSize.label,
       indicator: UnderlineTabIndicator(
-        borderSide: BorderSide(color: Color(0xff3d63ff), width: 2.0),
+        borderSide: BorderSide(color: primary, width: 2.0),
       ),
     ),
     sliderTheme: SliderThemeData(
-      activeTrackColor: Color(0xff3d63ff),
-      inactiveTrackColor: Color(0xff3d63ff).withAlpha(140),
-      trackShape: RoundedRectSliderTrackShape(),
+      activeTrackColor: primary,
+      inactiveTrackColor: primary.withAlpha(140),
+      trackShape: const RoundedRectSliderTrackShape(),
       trackHeight: 4.0,
-      thumbColor: Color(0xff3d63ff),
-      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
-      overlayShape: RoundSliderOverlayShape(overlayRadius: 24.0),
-      tickMarkShape: RoundSliderTickMarkShape(),
+      thumbColor: primary,
+      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10.0),
+      overlayShape: const RoundSliderOverlayShape(overlayRadius: 24.0),
+      tickMarkShape: const RoundSliderTickMarkShape(),
       inactiveTickMarkColor: Colors.red[100],
-      valueIndicatorShape: PaddleSliderValueIndicatorShape(),
-      valueIndicatorTextStyle: TextStyle(
+      valueIndicatorShape: const PaddleSliderValueIndicatorShape(),
+      valueIndicatorTextStyle: const TextStyle(
         color: Colors.white,
       ),
     ),
   );
+  static const backgroundDark = Color(0xff464c52);
+
+  
   static ThemeData darkTheme = ThemeData(
-      brightness: Brightness.dark,
-      canvasColor: Colors.transparent,
-      primaryColor: Color(0xff3d63ff),
-      scaffoldBackgroundColor: Color(0xff464c52),
-      backgroundColor: Color(0xff464c52),
-      appBarTheme: AppBarTheme(
-        textTheme: darkAppBarTextTheme,
-        actionsIconTheme: IconThemeData(
-          color: Color(0xffffffff),
-        ),
-        color: Color(0xff2e343b),
-        iconTheme: IconThemeData(color: Color(0xffffffff), size: 24),
+    brightness: Brightness.dark,
+    canvasColor: Colors.transparent,
+    primaryColor: primary,
+    scaffoldBackgroundColor: backgroundDark,
+    backgroundColor: backgroundDark,
+    appBarTheme: const AppBarTheme(
+      // textTheme: darkAppBarTextTheme,
+      actionsIconTheme: IconThemeData(
+        color: Color(0xffffffff),
       ),
-      colorScheme: ColorScheme.dark(
-        primary: Color(0xff3d63ff),
-        primaryVariant: Color(0xff3d63ff),
-        secondary: Color(0xff00cc77),
-        secondaryVariant: Color(0xff00cc77),
-        background: Color(0xff343a40),
-        onPrimary: Colors.white,
-        onBackground: Colors.white,
-        onSecondary: Colors.white,
-        surface: Color(0xff585e63),
+      color: Color(0xff2e343b),
+      iconTheme: IconThemeData(color: Color(0xffffffff), size: 24),
+    ),
+    colorScheme: const ColorScheme.dark(
+      primary: primary,
+      primaryVariant: primary,
+      secondary: Color(0xff00cc77),
+      secondaryVariant: Color(0xff00cc77),
+      background: Color(0xff343a40),
+      onPrimary: Colors.white,
+      onBackground: Colors.white,
+      onSecondary: Colors.white,
+      surface: Color(0xff585e63),
+    ),
+    cardTheme: const CardTheme(
+      color: Color(0xff37404a),
+      shadowColor: Color(0xff000000),
+      elevation: 1,
+      margin: EdgeInsets.all(0),
+    ),
+    iconTheme: const IconThemeData(
+      color: Colors.white,
+    ),
+    textTheme: darkTextTheme,
+    indicatorColor: Colors.white,
+    disabledColor: const Color(0xffa3a3a3),
+    highlightColor: Colors.white,
+    inputDecorationTheme: const InputDecorationTheme(
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderSide: BorderSide(width: 1, color: primary),
       ),
-      cardTheme: CardTheme(
-        color: Color(0xff37404a),
-        shadowColor: Color(0xff000000),
-        elevation: 1,
-        margin: EdgeInsets.all(0),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderSide: BorderSide(width: 1, color: Colors.white70),
       ),
-      iconTheme: IconThemeData(
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(4)),
+        borderSide: BorderSide(width: 1, color: Colors.white70),
+      ),
+    ),
+    dividerColor: const Color(0xffd1d1d1),
+    errorColor: Colors.orange,
+    cardColor: const Color(0xff282a2b),
+    splashColor: Colors.white.withAlpha(100),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: primary,
+        splashColor: Colors.white,
+        highlightElevation: 8,
+        elevation: 4,
+        focusColor: primary,
+        hoverColor: primary,
+        foregroundColor: Colors.white),
+    popupMenuTheme: PopupMenuThemeData(
+      color: const Color(0xff37404a),
+      textStyle: lightTextTheme.bodyText2!
+          .merge(const TextStyle(color: Color(0xffffffff))),
+    ),
+    bottomAppBarTheme:
+        const BottomAppBarTheme(color: Color(0xff464c52), elevation: 2),
+    tabBarTheme: const TabBarTheme(
+      unselectedLabelColor: lightColorTextAppBar,
+      labelColor: primary,
+      indicatorSize: TabBarIndicatorSize.label,
+      indicator: UnderlineTabIndicator(
+        borderSide: BorderSide(color: primary, width: 2.0),
+      ),
+    ),
+    sliderTheme: SliderThemeData(
+      activeTrackColor: primary,
+      inactiveTrackColor: primary,
+      trackShape: const RoundedRectSliderTrackShape(),
+      trackHeight: 4.0,
+      thumbColor: primary,
+      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10.0),
+      overlayShape: const RoundSliderOverlayShape(overlayRadius: 24.0),
+      tickMarkShape: const RoundSliderTickMarkShape(),
+      inactiveTickMarkColor: Colors.red.shade100,
+      valueIndicatorShape: const PaddleSliderValueIndicatorShape(),
+      valueIndicatorTextStyle: const TextStyle(
         color: Colors.white,
       ),
-      textTheme: darkTextTheme,
-      indicatorColor: Colors.white,
-      disabledColor: Color(0xffa3a3a3),
-      highlightColor: Colors.white,
-      inputDecorationTheme: InputDecorationTheme(
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(4)),
-          borderSide: BorderSide(width: 1, color: Color(0xff3d63ff)),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(4)),
-          borderSide: BorderSide(width: 1, color: Colors.white70),
-        ),
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(4)),
-            borderSide: BorderSide(width: 1, color: Colors.white70)),
-      ),
-      dividerColor: Color(0xffd1d1d1),
-      errorColor: Colors.orange,
-      cardColor: Color(0xff282a2b),
-      splashColor: Colors.white.withAlpha(100),
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
-          backgroundColor: Color(0xff3d63ff),
-          splashColor: Colors.white.withAlpha(100),
-          highlightElevation: 8,
-          elevation: 4,
-          focusColor: Color(0xff3d63ff),
-          hoverColor: Color(0xff3d63ff),
-          foregroundColor: Colors.white),
-      accentColor: Color(0xff3d63ff),
-      popupMenuTheme: PopupMenuThemeData(
-        color: Color(0xff37404a),
-        textStyle:
-            lightTextTheme.bodyText2!.merge(TextStyle(color: Color(0xffffffff))),
-      ),
-      bottomAppBarTheme:
-          BottomAppBarTheme(color: Color(0xff464c52), elevation: 2),
-      tabBarTheme: TabBarTheme(
-        unselectedLabelColor: Color(0xff495057),
-        labelColor: Color(0xff3d63ff),
-        indicatorSize: TabBarIndicatorSize.label,
-        indicator: UnderlineTabIndicator(
-          borderSide: BorderSide(color: Color(0xff3d63ff), width: 2.0),
-        ),
-      ),
-      sliderTheme: SliderThemeData(
-        activeTrackColor: Color(0xff3d63ff),
-        inactiveTrackColor: Color(0xff3d63ff).withAlpha(100),
-        trackShape: RoundedRectSliderTrackShape(),
-        trackHeight: 4.0,
-        thumbColor: Color(0xff3d63ff),
-        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
-        overlayShape: RoundSliderOverlayShape(overlayRadius: 24.0),
-        tickMarkShape: RoundSliderTickMarkShape(),
-        inactiveTickMarkColor: Colors.red[100],
-        valueIndicatorShape: PaddleSliderValueIndicatorShape(),
-        valueIndicatorTextStyle: TextStyle(
-          color: Colors.white,
-        ),
-      ),
-      cupertinoOverrideTheme: CupertinoThemeData());
-
-  static ThemeData getThemeFromThemeMode(int themeType) {
-    if (themeType == themeLight) {
-      return lightTheme;
-    } else if (themeType == themeDark) {
-      return darkTheme;
-    }
-    return lightTheme;
-  }
-
-  static NavigationBarTheme getNavigationThemeFromMode(int themeMode) {
-    print(themeMode);
-    NavigationBarTheme navigationBarTheme = NavigationBarTheme();
-    if (themeMode == themeLight) {
-      navigationBarTheme.backgroundColor = Colors.white;
-      navigationBarTheme.selectedItemColor = Color(0xff3d63ff);
-      navigationBarTheme.unselectedItemColor = Color(0xff495057);
-      navigationBarTheme.selectedOverlayColor = Color(0x383d63ff);
-    } else if (themeMode == themeDark) {
-      navigationBarTheme.backgroundColor = Color(0xff37404a);
-      navigationBarTheme.selectedItemColor = Color(0xff37404a);
-      navigationBarTheme.unselectedItemColor = Color(0xffd1d1d1);
-      navigationBarTheme.selectedOverlayColor = Color(0xffffffff);
-    }
-    return navigationBarTheme;
-  }
-
-
-
-
-}
-
-class CustomAppTheme {
-
-  final Color bgLayer1,
-      bgLayer2,
-      border1,
-      border2,
-      disabledColor,
-      onDisabled,
-      colorInfo,
-      colorWarning,
-      colorSuccess,
-      colorError,
-      shadowColor,
-      onInfo,
-      onWarning,
-      onSuccess,
-      onError;
-
-
-  final Color groceryPrimaryColor,onGroceryPrimaryColor,groceryBg1,groceryBg2;
-
-
-  final Color lightBlack,red,green,yellow,orange,blue,purple,pink,brown;
-
-  CustomAppTheme(
-    {
-    this.border1 = const Color(0xffeef2f7),
-    this.border2= const Color(0xffe8ecf1),
-    this.bgLayer1 = const Color(0xffffffff),
-    this.bgLayer2 = const Color(0xfff8faff),
-    this.disabledColor = const Color(0xffdcc7ff),
-    this.onDisabled = const Color(0xffffffff),
-    this.colorWarning = const Color(0xffffc837),
-    this.colorInfo = const Color(0xffff784b),
-    this.colorSuccess = const Color(0xff3cd278),
-    this.shadowColor = const Color(0xff1f1f1f),
-    this.onInfo = const Color(0xffffffff),
-    this.onWarning = const Color(0xffffffff),
-    this.onSuccess = const Color(0xffffffff),
-    this.colorError = const Color(0xfff0323c),
-    this.onError = const Color(0xffffffff),
-
-    //Grocery color scheme
-    this.groceryPrimaryColor = const Color(0xff10bb6b),
-    this.onGroceryPrimaryColor = const Color(0xffffffff),
-    this.groceryBg1 = const Color(0xfffbfbfb),
-    this.groceryBg2 = const Color(0xfff5f5f5),
-
-    //Color
-    this.lightBlack = const Color(0xffa7a7a7),
-    this.red =const Color(0xffFF0000),
-    this.green = const Color(0xff008000),
-    this.yellow = const Color(0xfffff44f),
-    this.orange = const Color(0xffFFA500),
-    this.blue = const Color(0xff0000ff),
-    this.purple = const Color(0xff800080),
-    this.pink = const Color(0xffFFC0CB),
-    this.brown = const Color(0xffA52A2A),
-
-  });
-
-
-  //--------------------------------------  Custom App Theme ----------------------------------------//
-
-
-  static final CustomAppTheme lightCustomAppTheme = CustomAppTheme(
-    bgLayer1: Color(0xfffafbfe),
-    bgLayer2: Color(0xffffffff),
-
-    border1: Color(0xffeef2f7),
-    border2: Color(0xffe8ecf1),
-
-    disabledColor: Color(0xff636363),
-    onDisabled: Color(0xffffffff),
-    colorInfo: Color(0xffff784b),
-    colorWarning: Color(0xffffc837),
-    colorSuccess: Color(0xff3cd278),
-    shadowColor: Color(0xff9aa1ab),
-    onInfo: Color(0xffffffff),
-    onSuccess: Color(0xffffffff),
-    onWarning: Color(0xffffffff),
-    colorError: Color(0xfff0323c),
-    onError: Color(0xffffffff),);
-
-
-  static final CustomAppTheme darkCustomAppTheme = CustomAppTheme(
-      bgLayer1: Color(0xff343a40),
-      bgLayer2: Color(0xff37404a),
-
-      border1: Color(0xff3b424e),
-      border2: Color(0xff464f5b),
-
-      disabledColor: Color(0xffbababa),
-      onDisabled: Color(0xff000000),
-      colorInfo: Color(0xffff784b),
-      colorWarning: Color(0xffffc837),
-      colorSuccess: Color(0xff3cd278),
-      shadowColor: Color(0xFF01030E),
-      onInfo: Color(0xffffffff),
-      onSuccess: Color(0xffffffff),
-      onWarning: Color(0xffffffff),
-      colorError: Color(0xfff0323c),
-      onError: Color(0xffffffff),
-
-
-      //Grocery Dark
-      groceryBg1: Color(0xff212429),
-      groceryBg2: Color(0xff282930));
-
-
-}
-
-class NavigationBarTheme {
-  late Color backgroundColor,
-      selectedItemIconColor,
-      selectedItemTextColor,
-      selectedItemColor,
-      selectedOverlayColor,
-      unselectedItemIconColor,
-      unselectedItemTextColor,
-      unselectedItemColor;
+    ),
+    cupertinoOverrideTheme: const CupertinoThemeData(),
+  );
 }

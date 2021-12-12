@@ -3,7 +3,6 @@
 import 'dart:ui';
 
 import 'package:admin_panel/app/AppNotifier.dart';
-import 'package:admin_panel/app/AppTheme.dart';
 import 'package:admin_panel/utils/SizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -135,8 +134,6 @@ class MyCard extends StatelessWidget {
 
     return Consumer<AppNotifier>(
       builder: (BuildContext context, AppNotifier value, Widget? builderChild) {
-        CustomAppTheme customAppTheme =
-            AppTheme.getCustomAppTheme(value.themeMode());
         return InkWell(
           splashColor: Colors.transparent,
           hoverColor: Colors.transparent,
@@ -145,20 +142,20 @@ class MyCard extends StatelessWidget {
           onTap: onTap,
           child: Container(
             decoration: BoxDecoration(
-                color: color ?? customAppTheme.bgLayer2,
+                color: color ?? Theme.of(context).cardColor,
                 borderRadius: boxShape != BoxShape.circle
                     ? borderRadius ??
                         BorderRadius.all(Radius.circular(borderRadiusAll ?? 8))
                     : null,
                 border: bordered
                     ? border ??
-                        Border.all(color: customAppTheme.border2, width: 1)
+                        Border.all(color: Theme.of(context).backgroundColor, width: 1)
                     : null,
                 shape: boxShape ?? BoxShape.rectangle,
                 boxShadow: [
                   BoxShadow(
                     color: myShadow.color ??
-                        customAppTheme.shadowColor.withAlpha(myShadow.alpha),
+                        Theme.of(context).shadowColor.withAlpha(myShadow.alpha),
                     spreadRadius: myShadow.spreadRadius,
                     blurRadius: myShadow.blurRadius,
                     offset: myShadow.offset,

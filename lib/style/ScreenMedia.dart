@@ -21,9 +21,8 @@ class ScreenMedia{
     return ScreenMediaType.XXXXL;
   }
 
-  static int getSizeFromScreenMediaType(ScreenMediaType screenMediaType){
+  static int getSizeFromScreenMediaType(ScreenMediaType? screenMediaType){
     switch(screenMediaType){
-
       case ScreenMediaType.XS:
         return _ScreenMediaBreakPoint.XS;
       case ScreenMediaType.SM:
@@ -44,9 +43,9 @@ class ScreenMedia{
     return _ScreenMediaBreakPoint.XXXXL;
   }
 
-  static bool isMinimumSize(ScreenMediaType screenMediaType,{required double currentWidth,required ScreenMediaType currentScreenMediaType}){
+  static bool isMinimumSize(ScreenMediaType screenMediaType,{double? currentWidth,ScreenMediaType? currentScreenMediaType}){
 
-    double width = currentWidth??getSizeFromScreenMediaType(currentScreenMediaType).toDouble();
+    double width = currentWidth ?? getSizeFromScreenMediaType(currentScreenMediaType!).toDouble();
 
     switch(screenMediaType){
       case ScreenMediaType.XS:

@@ -6,39 +6,37 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppNotifier extends ChangeNotifier {
+  ThemeMode _themeMode = ThemeMode.light;
 
-   int _themeMode = 1;
+  static bool kIsWeb = kIsWeb;
+  static bool kIsWindow = Platform.isWindows;
+  static bool kIsLinux = Platform.isLinux;
+  static bool kIsMac = Platform.isMacOS;
 
-   static bool kIsWeb = kIsWeb;
-   static bool kIsWindow = Platform.isWindows;
-   static bool kIsLinux = Platform.isLinux;
-   static bool kIsMac = Platform.isMacOS;
+  static bool kIsFullScreen = kIsLinux || kIsWeb || kIsWindow || kIsMac;
 
-   static bool kIsFullScreen = kIsLinux || kIsWeb || kIsWindow || kIsMac;
-
-
-   AppNotifier() {
+  AppNotifier() {
     init();
   }
 
   init() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    int? data =  sharedPreferences.getInt("themeMode");
-    if(data==null)
-      _themeMode = 1;
-    else
-      _themeMode = data;
+    int? data = sharedPreferences.getInt("themeMode");
+    if (data == null) {
+      _themeMode = ThemeMode.light;
+    } else if (data == 1) {
+      _themeMode = ThemeMode.light;
+    } else {
+      _themeMode = ThemeMode.dark;
+    }
 
-    _themeMode = 1;
     notifyListeners();
   }
 
-   int themeMode() => _themeMode;
-
-
+  ThemeMode themeMode() => _themeMode;
 
   Future<void> updateTheme(int themeMode) async {
-    this._themeMode = themeMode;
+    _themeMode = themeMode == 1 ? ThemeMode.light : ThemeMode.dark;
     notifyListeners();
 
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();

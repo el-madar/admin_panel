@@ -62,7 +62,7 @@ class DrawerMenuMaster extends StatelessWidget {
                       height: 30,
                     ),
                     onTap: () => editScreenAndBAck(context, viewModel, 0),
-                    selected: viewModel!.index == 0,
+                    selected: viewModel!.selected.index == 0,
                   ),
                   ListTile(
                     leading: Image.asset(
@@ -72,7 +72,7 @@ class DrawerMenuMaster extends StatelessWidget {
                     ),
                     title: Text(tr('live_chat')),
                     onTap: () => editScreenAndBAck(context, viewModel, 1),
-                    selected: viewModel.index == 1,
+                    selected: viewModel.selected.index == 1,
                   ),
                   ListTile(
                     leading: Image.asset(
@@ -82,17 +82,17 @@ class DrawerMenuMaster extends StatelessWidget {
                     ),
                     title: Text(tr('gallery')),
                     onTap: () => editScreenAndBAck(context, viewModel, 2),
-                    selected: viewModel.index == 2,
+                    selected: viewModel.selected.index == 2,
                   ),
                   ListTile(
                     leading: Icon(
-                      viewModel.index == 3
+                      viewModel.selected.index == 3
                           ? Icons.favorite
                           : Icons.favorite_border,
                     ),
                     title: Text(tr('wish_list')),
                     onTap: () => editScreenAndBAck(context, viewModel, 3),
-                    selected: viewModel.index == 3,
+                    selected: viewModel.selected.index == 3,
                   ),
                   ListTile(
                     leading: Image.asset(
@@ -102,7 +102,7 @@ class DrawerMenuMaster extends StatelessWidget {
                     ),
                     title: Text(tr('explore_online_news')),
                     onTap: () => editScreenAndBAck(context, viewModel, 4),
-                    selected: viewModel.index == 4,
+                    selected: viewModel.selected.index == 4,
                   ),
                 ],
               ),

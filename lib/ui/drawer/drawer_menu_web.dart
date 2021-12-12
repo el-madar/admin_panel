@@ -12,35 +12,70 @@ class DrawerMenuWebMaster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<DrawerViewModel>(
-      // selector: (context, provider) => provider!.index,
-      builder: (context, provider, child) {
-        return ValueListenableBuilder<bool>(
-            valueListenable: provider.isExtended,
-            builder: (context, value, child) {
-              return NavigationRail(
-                backgroundColor: Colors.grey,
-                elevation: 10,
-                extended: provider.isExtended.value,
-                leading: _NavigationRailHeader(
-                  extended: provider.isExtended,
-                  // brandTextColor: brandTextColor,
-                ),
-                selectedIndex: provider.index,
-                onDestinationSelected: (int index) {
-                  provider.editScreen(index);
-                },
-                minExtendedWidth: 200,
-                labelType: NavigationRailLabelType.none,
-                /*------------- Build Tabs -------------------*/
-                destinations: provider.rails,
-              );
-            });
-      },
+    return Row(
+      children: [
+        Consumer<DrawerViewModel>(
+          // selector: (context, provider) => provider!.index,
+          builder: (context, provider, child) {
+            return ValueListenableBuilder<bool>(
+                valueListenable: provider.isExtended,
+                builder: (context, value, child) {
+                  return NavigationRail(
+                    backgroundColor: Colors.grey,
+                    elevation: 10,
+                    extended: provider.isExtended.value,
+                    leading: _NavigationRailHeader(
+                      extended: provider.isExtended,
+                      // brandTextColor: brandTextColor,
+                    ),
+                    selectedIndex: provider.selected.index,
+                    onDestinationSelected: (int index) {
+                      provider.editScreen(index);
+                    },
+                    minExtendedWidth: 200,
+                    labelType: NavigationRailLabelType.none,
+                    /*------------- Build Tabs -------------------*/
+                    destinations: provider.screens
+                        .map(
+                          (item) => NavigationRailDestination(
+                        icon: Icon(
+                          item.icon,
+                          color: Theme.of(context).colorScheme.onBackground,
+                          size: 18,
+                        ),
+                        padding: Spacing.zero,
+                        selectedIcon: Icon(
+                          item.iconSelected,
+                          color: Theme.of(context).colorScheme.primary,
+                          size: 18,
+                        ),
+                        label: Text(
+                          item.title,
+                          style: AppTheme.getTextStyle(
+                            Theme.of(context).textTheme.caption!,
+                            color: provider.selected.index == item.index
+                                ? (Theme.of(context).colorScheme.primary)
+                                : (Theme.of(context).colorScheme.onBackground),
+                            fontWeight: 600,
+                          ),
+                        ),
+                      ),
+                    )
+                        .toList(),
+                  );
+                });
+          },
+        ),
+        const VerticalDivider(
+          width: 1.3,
+          thickness: 1.3,
+          color: Colors.purple,
+        ),
+      ],
     );
   }
-
 }
+
 class _NavigationRailHeader extends StatelessWidget {
   final ValueNotifier<bool> extended;
   final Color? brandTextColor;
