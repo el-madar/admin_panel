@@ -25,5 +25,6 @@
   "invalid_password": "invalid password",
   "invalid_confirm_password": "invalid confirm password",
   "home": "Home",
-  "invalid_email": "Invalid Email"
+  "invalid_email": "Invalid Email",
+  "error": "Error"
 }

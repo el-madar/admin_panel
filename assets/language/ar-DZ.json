@@ -44,6 +44,7 @@
   "What_would_your_looking_for": "عن ماذا تبحث؟",
   "filter": "فلتر",
   "invalid_email": "بريد الكتروني غير صالح",
-  "no_internet": "لايوجد اتصال بالانترنت"
+  "no_internet": "لايوجد اتصال بالانترنت",
+  "error": "خطاء"
 
 }

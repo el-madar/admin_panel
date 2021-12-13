@@ -1,30 +1,30 @@
-import 'dart:io';
-
 import 'package:admin_panel/model/user.dart';
 import 'package:admin_panel/resources/models/login_request.dart';
-import 'package:admin_panel/resources/models/register_request.dart';
 import 'package:admin_panel/resources/repository.dart';
 import 'package:admin_panel/utils/custom_exception.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 
 class LoginController extends ChangeNotifier {
 
   bool _isLoading = false;
-  late String _errorMessage;
+  late List<dynamic> _errorMessages = [];
 
   bool get isLoading => _isLoading;
-  String get errorMessage => _errorMessage;
+  List<dynamic> get errorMessage => _errorMessages;
 
   void setLoading(val){
     _isLoading = val;
     notifyListeners();
   }
 
-  void setMessage(val){
-    _errorMessage = val;
+  void setMessages(val){
+    _errorMessages = val;
+    notifyListeners();
+  }
+
+  void resetMessages(){
+    _errorMessages = [];
     notifyListeners();
   }
 
@@ -44,14 +44,17 @@ class LoginController extends ChangeNotifier {
 
   Future login(LoginRequest loginRequest) async {
     setLoading(true);
+    resetMessages();
     try {
       _user = await Repository().login(
         loginRequest: loginRequest,
       );
     } on MyException catch (e) {
-      _errorMessage = e.message;
+      setMessages(e.messages);
+
     } catch (e) {
-      _errorMessage = e.toString();
+      setMessages([e.toString()]);
+
     }
     setLoading(false);
   }

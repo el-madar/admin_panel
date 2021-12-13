@@ -20,7 +20,7 @@ class ArticlesViewModel  with ChangeNotifier {
     try {
       articlesNextWeb = await Repository().getArticles('the-next-web');
     } on MyException catch (e) {
-      errors = e.message;
+      // errors = e.messages;
     } catch (e) {
       errors = tr('try_again_later');
     }
@@ -32,7 +32,7 @@ class ArticlesViewModel  with ChangeNotifier {
     try {
       articlesNextWeb = await Repository().getArticles('associated-press');
     } on MyException catch (e) {
-      errors = e.message;
+      // errors = e.messages;
     } catch (e) {
       errors = tr('try_again_later');
     }

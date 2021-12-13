@@ -1,10 +1,10 @@
 class MyException implements Exception {
-  final String message;
+  final List<dynamic> messages;
   final int error;
   final String? errorException;
 
   MyException({
-    required this.message,
+    required this.messages,
     required this.error,
     this.errorException,
   });

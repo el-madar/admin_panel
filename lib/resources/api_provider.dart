@@ -17,7 +17,7 @@ class ApiProvider {
         } else {
           // If that call successful, But Have Error throw an error.
           throw MyException(
-            message: data['message'].toString(),
+            messages: data['message'],
             error: data["status"],
             errorException: "Errors Return From Back End !!",
           );
@@ -25,20 +25,20 @@ class ApiProvider {
       } else {
         // If that call was not successful, throw an error.
         throw MyException(
-          message: data['message'],
+          messages: data['message'],
           error: response.statusCode,
           errorException: 'Errors From States Request !',
         );
       }
     } on TimeoutException catch (e) {
       throw MyException(
-        message: tr('an_error_occurred_please_try_again'),
+        messages: [tr('an_error_occurred_please_try_again')],
         error: 101,
         errorException: e.message,
       );
     } on SocketException catch (e) {
       throw MyException(
-        message: tr('please_check_internet_connection'),
+        messages: [tr('please_check_internet_connection')],
         error: 102,
         errorException: e.message,
       );
@@ -53,24 +53,24 @@ class ApiProvider {
 
       dynamic data = json.decode(response.body);
 
-      if (response.statusCode == 200 || response.statusCode == 201) {
+      if (/*response.statusCode == 200 || */response.statusCode == 201) {
         return data['data'];
       } else {
         throw MyException(
-          message: data['data'][0],
+          messages: data['errors'],
           error: response.statusCode,
         );
       }
     } on TimeoutException catch (e) {
       print(e.message);
       throw MyException(
-        message: tr('an_error_occurred_please_try_again'),
+        messages: [tr('an_error_occurred_please_try_again')],
         error: 101,
       );
     } on SocketException catch (e) {
       print(e.message);
       throw MyException(
-        message: tr('please_check_internet_connection'),
+        messages: [tr('please_check_internet_connection')],
         error: 102,
       );
     }
