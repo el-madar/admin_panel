@@ -33,7 +33,7 @@ class Repository {
       headers: {},
       body: json.encode(loginRequest.toJson()),
     );
-
-    return userFromJson(responseData['user']);
+    User user =  User.fromJson(responseData['user']);
+    return user;
   }
 }

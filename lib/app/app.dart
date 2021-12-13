@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
             themeMode: value.themeMode(),
             darkTheme: AppTheme.darkTheme,
             theme: AppTheme.lightTheme,
-            home: const LoginScreen(),
+            home: LoginScreen(),
           );
         },
     );

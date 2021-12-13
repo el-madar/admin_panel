@@ -46,7 +46,7 @@ class LoginController extends ChangeNotifier {
     setLoading(true);
     try {
       _user = await Repository().login(
-        loginRequest: LoginRequest(email: '',userPassword: ''),
+        loginRequest: loginRequest,
       );
     } on MyException catch (e) {
       _errorMessage = e.message;
@@ -54,7 +54,6 @@ class LoginController extends ChangeNotifier {
       _errorMessage = e.toString();
     }
     setLoading(false);
-    notifyListeners();
   }
 
 }

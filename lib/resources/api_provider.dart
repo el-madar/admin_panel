@@ -46,7 +46,7 @@ class ApiProvider {
   }
 
   Future<dynamic> postRequestAPI({required String url,required String body,required Map<String, String> headers}) async {
-    headers.addAll({"Content-type":"application/json"});
+    headers.addAll({"Content-type":"application/json","Content-Language":tr('current_language')});
 
     try {
       final response = await http.post(Uri.parse(url),body: body,headers: headers);

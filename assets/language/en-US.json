@@ -1,6 +1,7 @@
 {
   "app_title": "garson Admin panel",
-
+  "current_language": "en",
+  "language": "language",
 
   "enter_email": "Enter Email",
   "email": "Email",
