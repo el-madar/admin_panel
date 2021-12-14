@@ -52,7 +52,6 @@ class _SplashScreenState extends State<SplashScreen>
       ),
       end: Offset(0, 0),
     ).animate(_animationController);
-
     _animationController.forward().whenComplete(() {
       BlocProvider.of<AuthenticationBloc>(context).add(AppStarted());
     });
@@ -66,17 +65,11 @@ class _SplashScreenState extends State<SplashScreen>
           padding: const EdgeInsets.symmetric(horizontal: 20),
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/loaderBackground.png"),
-              fit: BoxFit.fitWidth,
-            ),
-          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Image(image: AssetImage("assets/logoMark.png")),
+              const Icon(Icons.add_location,size: 150,),
               const SizedBox(height: paddingBig),
               RichText(
                 textAlign: TextAlign.center,
