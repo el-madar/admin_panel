@@ -1,6 +1,5 @@
 import 'package:admin_panel/model/articles.dart';
 import 'package:admin_panel/resources/repository.dart';
-import 'package:admin_panel/ui/articles/articles_screen.dart';
 import 'package:admin_panel/utils/custom_exception.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';

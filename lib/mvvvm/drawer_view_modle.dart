@@ -1,9 +1,7 @@
-import 'package:admin_panel/ui/articles/articles_screen.dart';
+import 'package:admin_panel/ui/brand/brand_screen.dart';
 import 'package:admin_panel/ui/drawer/drawer_model.dart';
-import 'package:admin_panel/ui/gallery/gallery_screen.dart';
-import 'package:admin_panel/ui/live_chat/live_chat_screen.dart';
-import 'package:admin_panel/ui/online_news/online_news.dart';
-import 'package:admin_panel/ui/wish_list/wish_list_screen.dart';
+import 'package:admin_panel/ui/home_screen/home_screen.dart';
+import 'package:admin_panel/ui/users/users_screen.dart';
 import 'package:flutter/material.dart';
 
 class DrawerViewModel with ChangeNotifier {
@@ -11,34 +9,22 @@ class DrawerViewModel with ChangeNotifier {
 
   final List<DrawerModel> screens = [
     DrawerModel(
-      screen: const ArticlesScreen(),
+      screen: const HomeScreen(),
       icon: Icons.home,
-      title: 'articles',
+      title: 'home',
       index: 0,
     ),
     DrawerModel(
-      screen: const GalleryScreen(),
-      icon: Icons.home,
-      title: 'live_chat',
+      screen: const UsersScreen(),
+      icon: Icons.person,
+      title: 'users',
       index: 1,
     ),
     DrawerModel(
-      screen: const OnlineNewsScreen(),
-      icon: Icons.home,
-      title: 'gallery',
+      screen: const BrandScreen(),
+      icon: Icons.store,
+      title: 'brand',
       index: 2,
-    ),
-    DrawerModel(
-      screen: const LiveChatScreen(),
-      icon: Icons.home,
-      title: 'wish_list',
-      index: 3,
-    ),
-    DrawerModel(
-      screen: const WishListScreen(),
-      icon: Icons.home,
-      title: 'explore_online_news',
-      index: 4,
     ),
   ];
 
