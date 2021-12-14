@@ -1,3 +1,4 @@
+import 'package:admin_panel/bloc/authentication/bloc.dart';
 import 'package:admin_panel/mvvvm/login_view_modle.dart';
 import 'package:admin_panel/resources/models/login_request.dart';
 import 'package:admin_panel/style/MyCard.dart';
@@ -8,6 +9,7 @@ import 'package:admin_panel/utils/dialogs.dart';
 import 'package:admin_panel/utils/validation.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
@@ -53,8 +55,8 @@ class _LoginScreenState extends State<LoginScreen> {
             for(int i = 0;i<model.errorMessage.length;i++){
               showErrorToast(model.errorMessage[i]);
             }
-
-
+          } else if(model.isAuth){
+            BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn());
           }
 
 

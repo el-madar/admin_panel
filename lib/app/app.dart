@@ -1,9 +1,11 @@
 import 'package:admin_panel/app/AppNotifier.dart';
+import 'package:admin_panel/bloc/authentication/bloc.dart';
 import 'package:admin_panel/ui/auth/login_screen.dart';
 import 'package:admin_panel/ui/main/main_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
@@ -17,6 +19,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  AuthenticationBloc _authenticationBloc = AuthenticationBloc();
+
+
   @override
   Widget build(BuildContext context) {
     var easyLocal = EasyLocalization.of(context);
@@ -38,7 +44,30 @@ class _MyAppState extends State<MyApp> {
             themeMode: value.themeMode(),
             darkTheme: AppTheme.darkTheme,
             theme: AppTheme.lightTheme,
-            home: LoginScreen(),
+            home: BlocBuilder(
+              bloc: _authenticationBloc,
+              builder: (context, state) {
+                if (state is Uninitialized) {
+                  return LoginScreen();
+                }
+                if (state is Authenticated) {
+                  return MainScreen();
+                }
+                if (state is Unauthenticated) {
+                  return LoginScreen();
+                }
+                if (state is CompleteProfile) {
+                  return LoginScreen();
+                }
+                if (state is FirstOpenApp) {
+                  return LoginScreen();
+                }
+                if (state is MostUpdateApp) {
+                  return LoginScreen();
+                }
+                return LoginScreen();
+              },
+            ),
           );
         },
     );

@@ -49,12 +49,12 @@ class LoginController extends ChangeNotifier {
       _user = await Repository().login(
         loginRequest: loginRequest,
       );
+      await Repository().loginOfLine(user: _user!);
+
     } on MyException catch (e) {
       setMessages(e.messages);
-
     } catch (e) {
       setMessages([e.toString()]);
-
     }
     setLoading(false);
   }
