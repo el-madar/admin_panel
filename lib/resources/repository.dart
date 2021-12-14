@@ -47,7 +47,7 @@ class Repository {
   }
 
 
-  Future<bool> logout({required LoginRequest loginRequest}) async {
+  Future<bool> logout() async {
     var done = await apiProvider.postRequestAPI(
       url: EP_login,
       headers: {
