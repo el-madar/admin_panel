@@ -48,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
         builder: (context,model,child){
           if(model.errorMessage.isNotEmpty){
             showErrorToast(model.errorMessage);
-          } else if(model.isAuth){
+          } else if(model.user != null){
             BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn());
           }
           return Scaffold(

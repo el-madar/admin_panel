@@ -34,14 +34,6 @@ class LoginController extends ChangeNotifier {
     return _user;
   }
 
-  bool get isAuth {
-    if (_user == null) {
-      return false;
-    } else {
-      return _user?.userID != null;
-    }
-  }
-
   Future login(LoginRequest loginRequest) async {
     setLoading(true);
     resetMessages();
