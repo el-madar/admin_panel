@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return ChangeNotifierProvider(
       create: (context) => _loginController,
       child: Consumer<LoginController>(
-        builder: (context,model,child){
+        builder: (context,model,child) {
           if(model.errorMessage.isNotEmpty){
             showErrorToast(model.errorMessage);
           } else if(model.user != null){
@@ -99,11 +99,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                               borderRadius: BorderRadius.circular(10)
                                           ),
                                           labelText: tr('email'),
-                                          // labelStyle: TextStyle(
-                                          //   color: Colors.black26,
-                                          //   fontFamily: 'OpenSans',
-                                          // ),
-//            prefixIcon: const Icon(Icons.person),
                                         ),
                                         validator: (value) => isValidEmail(value!)
                                             ? null
@@ -115,10 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         obscureText: true,
                                         keyboardType: TextInputType.visiblePassword,
                                         textInputAction: TextInputAction.done,
-                                        // style: TextStyle(
-                                        //   color: Colors.black,
-                                        //   fontFamily: 'OpenSans',
-                                        // ),
+
                                         decoration: InputDecoration(
                                           prefixIcon: const Icon(
                                             Icons.lock,
@@ -128,11 +120,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                               borderRadius: BorderRadius.circular(10)
                                           ),
                                           labelText: tr('password'),
-                                          // labelStyle: TextStyle(
-                                          //   color: Colors.black26,
-                                          //   fontFamily: 'OpenSans',
-                                          // ),
-//            prefixIcon: const Icon(Icons.lock),
                                         ),
                                         validator: (value) => isValidPassword(value!)
                                             ? null

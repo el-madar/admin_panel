@@ -58,7 +58,7 @@ class Repository {
   Future<User?> getLoginUser() async {
     String? data = preferences!.getString('user_login');
     if (data != null) {
-      Map<String, dynamic> userData = jsonDecode(data);
+      Map<dynamic, dynamic> userData = jsonDecode(data);
       user = User.fromJson(userData);
       return user;
     }

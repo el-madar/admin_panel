@@ -28,17 +28,19 @@ class User {
   String? token;
 
 
-  factory User.fromJson(Map<String, dynamic> json) => User(
-    userUID: json["userUID"],
-    userID: json["userID"],
-    userName: json["name"],
-    userCity: json["userCity"],
-    userEmail: json["email"],
-    userPhone: json["userPhone"],
-    userDateBirth: json["userDateBirth"],
-    token: json["api_token"],
-    userRoleName: json["userRoleName"],
-  );
+  factory User.fromJson(Map<dynamic, dynamic> json) {
+    return User(
+      userUID: json["userUID"],
+      userID: json["userID"],
+      userName: json["name"],
+      userCity: json["userCity"],
+      userEmail: json["email"],
+      userPhone: json["userPhone"],
+      userDateBirth: json["userDateBirth"],
+      token: json["api_token"],
+      userRoleName: json["userRoleName"],
+    );
+  }
 
 
   Map<String, dynamic> toJsonUpdate() => {
@@ -55,13 +57,13 @@ class User {
 
   Map<String, dynamic> toJson() => {
     "userUID": userUID ??'',
-    "userID": userID ??'',
+    "userID": userID ,
     "name": userName ??'',
     "userCity": userCity ??'',
     "email": userEmail ??'',
     "userPhone": userPhone ??'',
     "userDateBirth": userDateBirth ??'',
-    "api_token": token,
+    "api_token": token ?? '',
     "userRoleName": userRoleName ??'',
   };
 }
