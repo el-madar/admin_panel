@@ -46,6 +46,20 @@ class Repository {
     return user;
   }
 
+
+  Future<bool> logout({required LoginRequest loginRequest}) async {
+    var done = await apiProvider.postRequestAPI(
+      url: EP_login,
+      headers: {
+        'authorization':'Bearer ${user!.token!}'
+      },
+      body: '',
+    );
+    return done;
+  }
+
+
+
   ///////////////////////////////////// data base
   Future<bool> loginOfLine({required User user}) async {
     bool done = await preferences!.setString(

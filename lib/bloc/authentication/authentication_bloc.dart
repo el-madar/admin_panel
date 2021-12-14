@@ -81,7 +81,7 @@ class AuthenticationBloc
     // var firBaseToken = await FirebaseMessaging.instance.getToken();
     try {
       await Repository().logoutOfLine();
-      // await Repository().logout(firBaseToken);
+      await Repository().logout();
       yield Unauthenticated();
     } catch (e) {
       yield Unauthenticated();

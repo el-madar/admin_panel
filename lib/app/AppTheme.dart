@@ -355,11 +355,17 @@ class AppTheme {
     ),
   );
 
-  static const primary = primaryColor;
-  static const backgroundColor = Colors.white;
-  static const scaffoldBackgroundColor = Colors.white70;
 
   //Color Themes
+
+  static const primary = Color(0xFF303F9F);
+  static const secondary = Color(0xFF8E24AA);
+
+  static const backgroundColor = Colors.white;
+  static const scaffoldBackgroundColor = Colors.white70;
+  static const backgroundDark = Color(0xff464c52);
+
+
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: primary,
@@ -476,9 +482,7 @@ class AppTheme {
       ),
     ),
   );
-  static const backgroundDark = Color(0xff464c52);
 
-  
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     canvasColor: Colors.transparent,
