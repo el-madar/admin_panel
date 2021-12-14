@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 class LoginController extends ChangeNotifier {
 
   bool _isLoading = false;
-  late List<dynamic> _errorMessages = [];
+  late String _errorMessages = '';
 
   bool get isLoading => _isLoading;
-  List<dynamic> get errorMessage => _errorMessages;
+  String get errorMessage => _errorMessages;
 
   void setLoading(val){
     _isLoading = val;
@@ -24,7 +24,7 @@ class LoginController extends ChangeNotifier {
   }
 
   void resetMessages(){
-    _errorMessages = [];
+    _errorMessages = '';
     notifyListeners();
   }
 
@@ -50,11 +50,11 @@ class LoginController extends ChangeNotifier {
         loginRequest: loginRequest,
       );
       await Repository().loginOfLine(user: _user!);
-
     } on MyException catch (e) {
-      setMessages(e.messages);
+      // join convert last to String Add Add String sam \n  or other , -
+      setMessages(e.messages.join('\n'));
     } catch (e) {
-      setMessages([e.toString()]);
+      setMessages(e.toString());
     }
     setLoading(false);
   }
