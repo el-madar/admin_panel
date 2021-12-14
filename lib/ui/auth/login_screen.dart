@@ -46,23 +46,11 @@ class _LoginScreenState extends State<LoginScreen> {
       create: (context) => _loginController,
       child: Consumer<LoginController>(
         builder: (context,model,child){
-
-
           if(model.errorMessage.isNotEmpty){
-            // WidgetsBinding.instance?.addPostFrameCallback((_){
-            //   showErrorDialog(context, model.errorMessage).show();
-            // });
-            // for(int i = 0;i<model.errorMessage.length;i++){
-            //   showErrorToast(model.errorMessage[i]);
-            // }
-            // replace Don`t do any  Logic here do AL loop any operation in Provider
             showErrorToast(model.errorMessage);
-
           } else if(model.isAuth){
             BlocProvider.of<AuthenticationBloc>(context).add(LoggedIn());
           }
-
-
           return Scaffold(
             body: Center(
               child: SafeArea(

@@ -50,25 +50,32 @@ class ApiProvider {
 
     try {
       final response = await http.post(Uri.parse(url),body: body,headers: headers);
-
-      dynamic data = json.decode(response.body);
-
-      if (/*response.statusCode == 200 || */response.statusCode == 201) {
-        return data['data'];
+      if (response.statusCode == 200 || response.statusCode == 201)  {
+        Map data = json.decode(response.body);
+        if (response.statusCode == 201) {
+          return data['data'];
+        } else {
+          // If that call successful, But Have Error throw an error.
+          throw MyException(
+            messages: data['errors'],
+            error: response.statusCode,
+            errorException: "Errors Return From Back End !!",
+          );
+        }
       } else {
+        // If that call was not successful, throw an error.
         throw MyException(
-          messages: data['errors'],
+          messages: [tr('errors')],
           error: response.statusCode,
+          errorException: 'Errors From States Request !',
         );
       }
     } on TimeoutException catch (e) {
-      print(e.message);
       throw MyException(
         messages: [tr('an_error_occurred_please_try_again')],
         error: 101,
       );
     } on SocketException catch (e) {
-      print(e.message);
       throw MyException(
         messages: [tr('please_check_internet_connection')],
         error: 102,
