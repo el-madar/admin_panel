@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 
+const soBigPadding = 60.0;
 const bigPadding = 32.0;
 const defaultPadding = 16.0;
 const smallPadding = 8.0;

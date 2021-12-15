@@ -3,6 +3,7 @@ import 'package:admin_panel/mvvvm/login_view_modle.dart';
 import 'package:admin_panel/resources/models/login_request.dart';
 import 'package:admin_panel/style/MyCard.dart';
 import 'package:admin_panel/style/ScreenMedia.dart';
+import 'package:admin_panel/ui/widgets/button_with_icon.dart';
 import 'package:admin_panel/utils/colors.dart';
 import 'package:admin_panel/utils/constants.dart';
 import 'package:admin_panel/utils/dialogs.dart';
@@ -136,22 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           )
                                       ),
                                       const SizedBox(height: smallPadding),
-                                      SizedBox(
-                                        width: 200,
-                                        child: MaterialButton(
-                                          elevation: 5.0,
-                                          color: accentColor,
-                                          onPressed: () {
-                                            onFormSubmitted();
-                                          },
-                                          padding: const EdgeInsets.all(defaultPadding),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(30.0),
-                                          ),
-                                          child: model.isLoading ? const CircularProgressIndicator() : Text(tr('login'),)
-                                        ),
-                                      ),
-
+                                      ButtonWithIcon(title: tr("login"),color: Colors.greenAccent,onClock: () {},iconData: Icons.login,),
                                       const SizedBox(height: defaultPadding),
                                     ],
                                   ),

@@ -54,6 +54,7 @@ dependencies:
 
   day_night_switcher: ^0.2.0+1
   flutter_svg: ^1.0.0
+  responsive_grid_list: ^1.2.3
 
 
 dev_dependencies:

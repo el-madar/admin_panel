@@ -8,6 +8,8 @@
   "enter_password": "enter_password",
   "password": "password",
   "login": "login",
+  "search": "Search",
+  "logout": "Logout",
   "forget_passwords": "forget passwords",
   "enter_full_name": "enter full name",
   "full_name": "full name",
@@ -26,5 +28,7 @@
   "invalid_confirm_password": "invalid confirm password",
   "home": "Home",
   "invalid_email": "Invalid Email",
-  "error": "Error"
+  "error": "Error",
+  "filters": "Filters",
+  "addUser": "Add User"
 }

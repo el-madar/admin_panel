@@ -89,7 +89,6 @@ class MyRow extends StatelessWidget {
 
   Map<ScreenMediaType, DisplayType> getDisplayValue(
       Map<ScreenMediaType, DisplayType> display) {
-    display ??= {ScreenMediaType.XS: DisplayType.Block};
 
     if (display[ScreenMediaType.XS] == null) {
       display[ScreenMediaType.XS] = DisplayType.Block;

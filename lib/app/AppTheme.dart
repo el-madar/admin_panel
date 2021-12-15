@@ -89,20 +89,28 @@ class AppTheme {
       textStyle: const TextStyle(
         fontSize: 51,
         color: lightColorTextAppBar,
+        overflow: TextOverflow.ellipsis,
       ),
     ),
     headline4: GoogleFonts.ibmPlexSans(
       textStyle: const TextStyle(
         fontSize: 36,
         color: lightColorTextAppBar,
+        overflow: TextOverflow.ellipsis,
       ),
     ),
     headline5: GoogleFonts.ibmPlexSans(
-        textStyle: const TextStyle(fontSize: 25, color: lightColorTextAppBar)),
+      textStyle: const TextStyle(
+          fontSize: 25,
+          color: lightColorTextAppBar,
+        overflow: TextOverflow.ellipsis,
+      )
+    ),
     headline6: GoogleFonts.ibmPlexSans(
       textStyle: const TextStyle(
         fontSize: 18,
         color: lightColorTextAppBar,
+        overflow: TextOverflow.ellipsis,
       ),
     ),
     subtitle1: GoogleFonts.ibmPlexSans(
@@ -358,8 +366,8 @@ class AppTheme {
 
   //Color Themes
 
-  static const primary = Color(0xFF303F9F);
-  static const secondary = Color(0xFF8E24AA);
+  static const primary = Color(0xFF00A699);
+  static const secondary = Color(0xFF1DA1F2);
 
   static const backgroundColor = Color(0xFFEEEEEE);
   static const scaffoldBackgroundColor = Color(0xFFEEEEEE);
@@ -370,6 +378,7 @@ class AppTheme {
     brightness: Brightness.light,
     primaryColor: primary,
     // canvasColor: Colors.transparent,
+    accentColor: secondary,
     backgroundColor: backgroundColor,
     scaffoldBackgroundColor: scaffoldBackgroundColor,
     appBarTheme: const AppBarTheme(
@@ -487,6 +496,7 @@ class AppTheme {
     brightness: Brightness.dark,
     canvasColor: Colors.transparent,
     primaryColor: primary,
+    accentColor: secondary,
     scaffoldBackgroundColor: backgroundDark,
     backgroundColor: backgroundDark,
     appBarTheme: const AppBarTheme(
