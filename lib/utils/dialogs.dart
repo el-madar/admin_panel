@@ -32,6 +32,34 @@ void showErrorToast(String message){
   );
 }
 
+void showSuccesToast(String message){
+  Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 10,
+      backgroundColor: Colors.greenAccent,
+      textColor: Colors.white,
+      webShowClose: true,
+      fontSize: 16.0,
+      webBgColor: "#00A699"
+  );
+}
+
+void showWarningToast(String message){
+  Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 10,
+      backgroundColor: Colors.orangeAccent,
+      textColor: Colors.white,
+      webShowClose: true,
+      fontSize: 16.0,
+      webBgColor: "#F4B400"
+  );
+}
+
 AwesomeDialog showLoadingDialog(BuildContext context){
   return AwesomeDialog(
     context: context,
