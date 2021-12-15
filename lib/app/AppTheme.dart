@@ -361,15 +361,15 @@ class AppTheme {
   static const primary = Color(0xFF303F9F);
   static const secondary = Color(0xFF8E24AA);
 
-  static const backgroundColor = Colors.white;
-  static const scaffoldBackgroundColor = Colors.white70;
+  static const backgroundColor = Color(0xFFEEEEEE);
+  static const scaffoldBackgroundColor = Color(0xFFEEEEEE);
   static const backgroundDark = Color(0xff464c52);
 
 
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: primary,
-    canvasColor: Colors.transparent,
+    // canvasColor: Colors.transparent,
     backgroundColor: backgroundColor,
     scaffoldBackgroundColor: scaffoldBackgroundColor,
     appBarTheme: const AppBarTheme(

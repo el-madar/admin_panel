@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:admin_panel/app/AppTheme.dart';
 import 'package:admin_panel/mvvvm/drawer_view_modle.dart';
+import 'package:admin_panel/ui/main/action_widget.dart';
 import 'package:admin_panel/utils/SizeConfig.dart';
 import 'package:admin_panel/utils/images.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class DrawerMenuWebMaster extends StatelessWidget {
                 valueListenable: provider.isExtended,
                 builder: (context, value, child) {
                   return NavigationRail(
-                    backgroundColor: Colors.grey,
+                    backgroundColor: Theme.of(context).bottomAppBarTheme.color,
                     elevation: 10,
                     extended: provider.isExtended.value,
                     leading: _NavigationRailHeader(
@@ -66,11 +67,11 @@ class DrawerMenuWebMaster extends StatelessWidget {
                 });
           },
         ),
-        const VerticalDivider(
-          width: 1.3,
-          thickness: 1.3,
-          color: Colors.purple,
-        ),
+        // const VerticalDivider(
+        //   width: 1.3,
+        //   thickness: 1.3,
+        //   color: Colors.purple,
+        // ),
       ],
     );
   }

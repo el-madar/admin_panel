@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import 'dart:io';
 
 class ApiProvider {
-
   Future<dynamic> getRequestAPI({required String url}) async {
     try {
       final response = await http.get(Uri.parse(url));
@@ -45,12 +44,20 @@ class ApiProvider {
     }
   }
 
-  Future<dynamic> postRequestAPI({required String url,required String body,required Map<String, String> headers}) async {
-    headers.addAll({"Content-type":"application/json","Content-Language":tr('current_language')});
+  Future<dynamic> postRequestAPI(
+      {required String url,
+      required String body,
+      required Map<String, String> headers}) async {
+    headers.addAll({
+      "Content-type": "application/json",
+      "Accept":"application/json",
+      "Content-Language": tr('current_language'),
+    });
 
     try {
-      final response = await http.post(Uri.parse(url),body: body,headers: headers);
-      if (response.statusCode == 200 || response.statusCode == 201)  {
+      final response =
+          await http.post(Uri.parse(url), body: body, headers: headers);
+      if (response.statusCode == 200 || response.statusCode == 201) {
         Map data = json.decode(response.body);
         if (response.statusCode == 201) {
           return data['data'];
@@ -82,5 +89,4 @@ class ApiProvider {
       );
     }
   }
-
 }

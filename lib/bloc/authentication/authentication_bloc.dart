@@ -8,7 +8,6 @@ import 'bloc.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
-
   AuthenticationBloc() : super(Uninitialized());
 
   @override
@@ -66,9 +65,7 @@ class AuthenticationBloc
       final User? user = await Repository().getLoginUser();
       // await Repository().getURLFromFirebase();
       if (user != null) {
-          yield Authenticated(
-            userInfo: user,
-          );
+        yield Authenticated(userInfo: user);
       } else {
         yield Unauthenticated();
       }

@@ -1,3 +1,4 @@
+import 'package:admin_panel/app/AppNotifier.dart';
 import 'package:admin_panel/mvvvm/drawer_view_modle.dart';
 import 'package:admin_panel/mvvvm/end_drawer_view_modle.dart';
 import 'package:admin_panel/style/MyCard.dart';
@@ -5,9 +6,11 @@ import 'package:admin_panel/style/ScreenMedia.dart';
 import 'package:admin_panel/ui/drawer/drawer_menu_web.dart';
 import 'package:admin_panel/ui/drawer/drawer_model.dart';
 import 'package:admin_panel/ui/drawer/my_bottom_navigation_bar.dart';
+import 'package:admin_panel/ui/main/action_widget.dart';
 import 'package:admin_panel/ui/main/chang_lang.dart';
 import 'package:admin_panel/utils/constants.dart';
 import 'package:day_night_switcher/day_night_switcher.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,97 +33,72 @@ class MainScreen extends StatelessWidget {
           value: endDrawerViewModel,
         ),
       ],
-      child: Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          actions: [
-            SizedBox(
-              height: defaultSize,
-              width: defaultSize,
-              child: DayNightSwitcherIcon(
-                isDarkModeEnabled: true,
-                onStateChanged: (isDarkModeEnabled) {
-
-                },
-              ),
-            ),
-            const SizedBox(width: soSmallSize,),
-
-            Builder(
-              builder: (context) => GestureDetector(
-                child: const SizedBox(
-                  height: defaultSize,
-                  width: defaultSize,
-                  child: CircleAvatar(
-                      backgroundImage: AssetImage(languageEnglish)
-                  ),
-                ),
-                onTap: () {
-                  endDrawerViewModel.setEndDrawerView(const ChangLang(), context);
-                },
-              ),
-            ),
-            const SizedBox(width: soSmallSize,),
-            Builder(
-              builder: (context) => GestureDetector(
-                child: const SizedBox(
-                  height: bigSize,
-                  width: bigSize,
-                  child: CircleAvatar(
-                      backgroundImage: NetworkImage(avatar)
-                  ),
-                ),
-                onTap: () {
-                  endDrawerViewModel.setEndDrawerView(const MiniProfile(), context);
-                },
-              ),
-            ),
-            const SizedBox(width: soSmallSize,),
-          ],
-        ),
-        body: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            bool isScreenPhone = ScreenMedia.isMinimumSize(
-              ScreenMediaType.XS,
-              currentWidth: constraints.maxWidth,
-            );
-            return Row(
+      child: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          bool isScreenPhone = ScreenMedia.isMinimumSize(
+            ScreenMediaType.XS,
+            currentWidth: constraints.maxWidth,
+          );
+          return Scaffold(
+            key: _scaffoldKey,
+            appBar: isScreenPhone
+                ? AppBar(
+                    title: Selector<DrawerViewModel, DrawerModel>(
+                      selector: (context, provider) => provider.selected,
+                      builder: (context, selected, child) {
+                        return Text(tr(drawerViewModel.selected.title));
+                      },
+                    ),
+                    actions: const [
+                      ActionWidget(),
+                    ],
+                  )
+                : null,
+            body: Stack(
               children: [
-                isScreenPhone ? const SizedBox() : const DrawerMenuWebMaster(),
-                Expanded(
-                  child: Selector<DrawerViewModel, DrawerModel>(
-                    selector: (context, provider) => provider.selected,
-                    builder: (context, selected, child) {
-                      return drawerViewModel.selected.screen;
+                Row(
+                  children: [
+                    isScreenPhone
+                        ? const SizedBox()
+                        : const DrawerMenuWebMaster(),
+                    Expanded(
+                      child: Selector<DrawerViewModel, DrawerModel>(
+                        selector: (context, provider) => provider.selected,
+                        builder: (context, selected, child) {
+                          return drawerViewModel.selected.screen;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+                isScreenPhone
+                    ? const SizedBox()
+                    : Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: const [
+                          ActionWidget(),
+                        ],
+                      ),
+              ],
+            ),
+            bottomNavigationBar: isScreenPhone
+                ? const MyBottomNavigationBar()
+                : const SizedBox(),
+            endDrawer: Drawer(
+              child: Padding(
+                padding: const EdgeInsets.all(defaultPadding),
+                child: MyCard(
+                  child: Selector<EndDrawerViewModel, Widget>(
+                    selector: (context, model) => model.endDrawerView,
+                    builder: (context, view, child) {
+                      return view;
                     },
                   ),
                 ),
-              ],
-            );
-          },
-        ),
-        bottomNavigationBar: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            if (ScreenMedia.isMinimumSize(ScreenMediaType.XS,
-                currentWidth: constraints.maxWidth)) {
-              return const MyBottomNavigationBar();
-            }
-            return const SizedBox();
-          },
-        ),
-        endDrawer: Drawer(
-          child: Padding(
-            padding: const EdgeInsets.all(defaultPadding),
-            child: MyCard(
-              child: Selector<EndDrawerViewModel , Widget>(
-                  selector: (context , model) => model.endDrawerView,
-                  builder: (context , view, child){
-                    return view;
-                  }
               ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
