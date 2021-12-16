@@ -4,7 +4,6 @@ import 'package:admin_panel/style/ScreenMedia.dart';
 import 'package:admin_panel/ui/widgets/button_with_icon.dart';
 import 'package:admin_panel/ui/widgets/searchView.dart';
 import 'package:admin_panel/ui/widgets/user_card.dart';
-import 'package:admin_panel/utils/colors.dart';
 import 'package:admin_panel/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
