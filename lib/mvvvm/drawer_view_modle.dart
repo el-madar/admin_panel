@@ -15,7 +15,7 @@ class DrawerViewModel with ChangeNotifier {
       index: 0,
     ),
     DrawerModel(
-      screen: const UsersScreen(),
+      screen: UsersScreen(),
       icon: Icons.person,
       title: 'users',
       index: 1,

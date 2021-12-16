@@ -30,5 +30,6 @@
   "invalid_email": "Invalid Email",
   "error": "Error",
   "filters": "Filters",
-  "addUser": "Add User"
+  "addUser": "Add User",
+  "changeLanguage": "change Language"
 }

@@ -1,4 +1,5 @@
 
+import 'package:admin_panel/mvvvm/end_drawer_view_modle.dart';
 import 'package:admin_panel/style/ScreenMedia.dart';
 import 'package:admin_panel/ui/widgets/button_with_icon.dart';
 import 'package:admin_panel/ui/widgets/searchView.dart';
@@ -7,13 +8,20 @@ import 'package:admin_panel/utils/colors.dart';
 import 'package:admin_panel/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
 import 'package:responsive_grid_list/responsive_grid_list.dart';
 
+import 'add_user.dart';
+
 class UsersScreen extends StatelessWidget {
-  const UsersScreen({Key? key}) : super(key: key);
+  UsersScreen({Key? key}) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
+    final EndDrawerViewModel endDrawerViewModel =
+    context.watch<EndDrawerViewModel?>()!;
     return Scaffold(
       body: Column(
         children: [
@@ -40,7 +48,9 @@ class UsersScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: ButtonWithIcon(title: tr("addUser"),color: Theme.of(context).primaryColor,onClock: () {},iconData: Icons.person_add_alt,),
+                      child: ButtonWithIcon(title: tr("addUser"),color: Theme.of(context).primaryColor,onClock: () {
+                        endDrawerViewModel.setEndDrawerView(AddUser(), context);
+                      },iconData: Icons.person_add_alt,),
                     ),
                   ],
                 )
