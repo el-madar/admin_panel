@@ -137,7 +137,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                           )
                                       ),
                                       const SizedBox(height: smallPadding),
-                                      ButtonWithIcon(title: tr("login"),color: Colors.greenAccent,onClock: () {},iconData: Icons.login,),
+                                      ButtonWithIcon(title: tr("login"),color: Colors.greenAccent,onClock: () {
+                                        onFormSubmitted();
+                                      },iconData: Icons.login,),
                                       const SizedBox(height: defaultPadding),
                                     ],
                                   ),
