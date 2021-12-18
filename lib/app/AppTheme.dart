@@ -89,28 +89,24 @@ class AppTheme {
       textStyle: const TextStyle(
         fontSize: 51,
         color: lightColorTextAppBar,
-        overflow: TextOverflow.ellipsis,
       ),
     ),
     headline4: GoogleFonts.ibmPlexSans(
       textStyle: const TextStyle(
         fontSize: 36,
         color: lightColorTextAppBar,
-        overflow: TextOverflow.ellipsis,
       ),
     ),
     headline5: GoogleFonts.ibmPlexSans(
       textStyle: const TextStyle(
           fontSize: 25,
           color: lightColorTextAppBar,
-        overflow: TextOverflow.ellipsis,
       )
     ),
     headline6: GoogleFonts.ibmPlexSans(
       textStyle: const TextStyle(
         fontSize: 18,
         color: lightColorTextAppBar,
-        overflow: TextOverflow.ellipsis,
       ),
     ),
     subtitle1: GoogleFonts.ibmPlexSans(

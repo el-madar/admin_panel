@@ -3,7 +3,7 @@ import 'package:admin_panel/mvvvm/end_drawer_view_modle.dart';
 import 'package:admin_panel/style/ScreenMedia.dart';
 import 'package:admin_panel/ui/widgets/button_with_icon.dart';
 import 'package:admin_panel/ui/widgets/searchView.dart';
-import 'package:admin_panel/ui/widgets/user_card.dart';
+import 'package:admin_panel/ui/users/user_card.dart';
 import 'package:admin_panel/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -43,13 +43,13 @@ class UsersScreen extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: ButtonWithIcon(title: tr("filters"),color: Theme.of(context).primaryColor,onClock: () {},iconData: Icons.filter_alt,),
+                      child: ButtonWithIcon(title: tr("filters"),color: Theme.of(context).primaryColor,onClock: () {},iconData: Icons.filter_alt,isLoading: false,),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: ButtonWithIcon(title: tr("addUser"),color: Theme.of(context).primaryColor,onClock: () {
                         endDrawerViewModel.setEndDrawerView(AddUser(), context);
-                      },iconData: Icons.person_add_alt,),
+                      },iconData: Icons.person_add_alt,isLoading: false,),
                     ),
                   ],
                 )
@@ -61,7 +61,7 @@ class UsersScreen extends StatelessWidget {
               horizontalGridMargin: defaultPadding,
               verticalGridMargin: defaultPadding,
               minItemWidth: 400,
-              children: List.generate(100, (index) => const UserCard(),),
+              children: List.generate(100, (index) => UserCard(),),
             ),
           )
         ],

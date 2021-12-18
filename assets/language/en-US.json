@@ -10,7 +10,7 @@
   "login": "login",
   "search": "Search",
   "logout": "Logout",
-  "forget_passwords": "forget passwords",
+  "forget_passwords": "Forget Password?",
   "enter_full_name": "enter full name",
   "full_name": "full name",
   "enter_confirm_password": "enter confirm password",
@@ -31,5 +31,7 @@
   "error": "Error",
   "filters": "Filters",
   "addUser": "Add User",
-  "changeLanguage": "change Language"
+  "changeLanguage": "change Language",
+  "backTo": "Back To",
+  "reset": "Reset"
 }

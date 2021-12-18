@@ -32,20 +32,20 @@ class SearchView extends StatelessWidget {
               hintText: "Search",
               hintStyle: AppTheme.getTextStyle(
                   GoogleFonts.ibmPlexSans(
-                      textStyle: TextStyle(fontSize: 15, color: Color(0xff4a4c4f))),
+                      textStyle: TextStyle(fontSize: 15, color: const Color(0xff4a4c4f))),
                   letterSpacing: 0,
                   fontWeight: 500),
-              border: OutlineInputBorder(
+              border: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(8),
                   ),
                   borderSide: BorderSide.none),
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(8),
                   ),
                   borderSide: BorderSide.none),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                   borderRadius: BorderRadius.all(
                     Radius.circular(8),
                   ),

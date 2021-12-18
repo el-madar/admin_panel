@@ -93,7 +93,7 @@ class AddUser extends StatelessWidget {
                 : tr('invalid_phone'),
           ),
           const SizedBox(height: defaultPadding),
-          ButtonWithIcon(title: tr("addUser"),color: Colors.greenAccent,onClock: () {},iconData: Icons.person_add_alt,),
+          ButtonWithIcon(title: tr("addUser"),color: Colors.greenAccent,onClock: () {},iconData: Icons.person_add_alt,isLoading: false,),
         ],
       ),
     );

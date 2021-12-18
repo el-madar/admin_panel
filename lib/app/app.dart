@@ -68,7 +68,7 @@ class _MyAppState extends State<MyApp> {
                   if (state is MostUpdateApp) {
                     return LoginScreen();
                   }
-                  return LoginScreen();
+                  return SplashScreen();
                 },
               ),
             ),

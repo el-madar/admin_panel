@@ -3,7 +3,6 @@ import 'package:admin_panel/mvvvm/login_view_modle.dart';
 import 'package:admin_panel/resources/models/login_request.dart';
 import 'package:admin_panel/style/MyCard.dart';
 import 'package:admin_panel/style/ScreenMedia.dart';
-import 'package:admin_panel/ui/auth/forget_password.dart';
 import 'package:admin_panel/ui/widgets/button_with_icon.dart';
 import 'package:admin_panel/utils/colors.dart';
 import 'package:admin_panel/utils/constants.dart';
@@ -15,18 +14,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class ForgetPassword extends StatefulWidget {
+  const ForgetPassword({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _ForgetPasswordState createState() => _ForgetPasswordState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _ForgetPasswordState extends State<ForgetPassword> {
   final GlobalKey<FormState> _formKey = GlobalKey();
 
   final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
   final LoginController _loginController = LoginController();
   late FToast fToast;
 
@@ -58,7 +56,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Align(
                           alignment: Alignment.topCenter,
                           child: Text(
-                            tr('login'),
+                            tr('forget_passwords'),
                             style: Theme.of(context)
                                 .textTheme
                                 .subtitle1
@@ -87,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         TextFormField(
                                           controller: _emailController,
                                           keyboardType:
-                                              TextInputType.emailAddress,
+                                          TextInputType.emailAddress,
                                           textInputAction: TextInputAction.next,
                                           // style: TextStyle(
                                           //   color: Colors.black,
@@ -100,61 +98,36 @@ class _LoginScreenState extends State<LoginScreen> {
                                             ),
                                             border: OutlineInputBorder(
                                                 borderRadius:
-                                                    BorderRadius.circular(10)),
+                                                BorderRadius.circular(10)),
                                             labelText: tr('email'),
                                           ),
                                           validator: (value) =>
-                                              isValidEmail(value!)
-                                                  ? null
-                                                  : tr('invalid_email'),
+                                          isValidEmail(value!)
+                                              ? null
+                                              : tr('invalid_email'),
                                         ),
                                         const SizedBox(height: defaultPadding),
-                                        TextFormField(
-                                          controller: _passwordController,
-                                          obscureText: true,
-                                          keyboardType:
-                                              TextInputType.visiblePassword,
-                                          textInputAction: TextInputAction.done,
-                                          decoration: InputDecoration(
-                                            prefixIcon: const Icon(
-                                              Icons.lock,
-                                              color: primaryColor,
-                                            ),
-                                            border: OutlineInputBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10)),
-                                            labelText: tr('password'),
-                                          ),
-                                          validator: (value) =>
-                                              isValidPassword(value!)
-                                                  ? null
-                                                  : tr('invalid_password'),
-                                        ),
-                                        const SizedBox(height: smallPadding),
-                                        Align(
-                                            alignment:
-                                                tr('current_language') == "ar"
-                                                    ? Alignment.centerRight
-                                                    : Alignment.centerLeft,
-                                            child: TextButton(
-                                              child:
-                                                  Text(tr('forget_passwords')),
-                                              onPressed: () {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(builder: (context) => ForgetPassword()),
-                                                );
-                                              },
-                                            )),
-                                        const SizedBox(height: smallPadding),
                                         ButtonWithIcon(
-                                          title: tr("login"),
+                                          title: tr("reset"),
                                           color: Colors.greenAccent,
                                           onClock: onFormSubmitted,
-                                          iconData: Icons.login,
+                                          iconData: Icons.refresh,
                                           isLoading: model.isLoading,
                                         ),
                                         const SizedBox(height: defaultPadding),
+                                        Align(
+                                            alignment:
+                                            tr('current_language') == "ar"
+                                                ? Alignment.centerRight
+                                                : Alignment.centerLeft,
+                                            child: TextButton(
+                                              child:
+                                              Text(tr('backTo') +" : "+ tr('login')),
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                            )),
+                                        const SizedBox(height: smallPadding),
                                       ],
                                     ),
                                   ),
@@ -175,9 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   onFormSubmitted() {
     if (_formKey.currentState!.validate()) {
-      _loginController.login(LoginRequest(
-          email: _emailController.text.trim(),
-          userPassword: _passwordController.text));
+
     }
   }
 }
