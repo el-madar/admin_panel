@@ -2,3 +2,5 @@
 
 const String baseUrl = "http://garsonbackend.elmadar.info/api/admin";
 const String EP_login = "$baseUrl/login";
+
+const String EP_brands = "$baseUrl/brands";

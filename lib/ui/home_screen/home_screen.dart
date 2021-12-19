@@ -4,13 +4,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../widgets/loadingView.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        child: MessageScreen(title: tr('Home Screen')),
+        child: const LoadingView(),
       onTap: () {
         Provider.of<EndDrawerViewModel>(context, listen: false).setEndDrawerView(const Center(child: Text("Home Screen")), context);
       },

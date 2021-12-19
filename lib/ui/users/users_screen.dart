@@ -26,33 +26,43 @@ class UsersScreen extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            margin: ScreenMedia.isMinimumSize(
-              ScreenMediaType.XS,
-              currentWidth: MediaQuery.of(context).size.width,
-            ) ? const EdgeInsets.only(top: soSmallSize,left: soSmallSize,right: soSmallSize) : const EdgeInsets.only(top: soBigPadding,left: soSmallSize,right: soSmallSize),
-            child: Flex(
-              direction: !ScreenMedia.isMinimumSize(
+              margin: ScreenMedia.isMinimumSize(
                 ScreenMediaType.XS,
                 currentWidth: MediaQuery.of(context).size.width,
-              ) ? Axis.horizontal : Axis.vertical,
+              ) ? const EdgeInsets.only(top: soSmallSize,left: soSmallSize,right: soSmallSize) : const EdgeInsets.only(top: soBigPadding,left: soSmallSize,right: soSmallSize),
+            child: Flex(
+              direction:  Axis.horizontal,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 SearchView(),
-                Row(
+                !ScreenMedia.isMinimumSize(
+                  ScreenMediaType.XS,
+                  currentWidth: MediaQuery.of(context).size.width,
+                ) ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(4.0),
                       child: ButtonWithIcon(title: tr("filters"),color: Theme.of(context).primaryColor,onClock: () {},iconData: Icons.filter_alt,isLoading: false,),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(4.0),
                       child: ButtonWithIcon(title: tr("addUser"),color: Theme.of(context).primaryColor,onClock: () {
                         endDrawerViewModel.setEndDrawerView(AddUser(), context);
                       },iconData: Icons.person_add_alt,isLoading: false,),
                     ),
                   ],
-                )
+                ) :  Container(
+                  height: 50,
+                  width: 50,
+                  margin: const EdgeInsets.all(soSmallSize),
+                  child: FloatingActionButton(
+                    child: const Icon(Icons.filter_alt),
+                    onPressed: () {
+
+                    },
+                  ),
+                ),
               ],
             )
           ),
@@ -65,7 +75,16 @@ class UsersScreen extends StatelessWidget {
             ),
           )
         ],
-      )
+      ),
+      floatingActionButton: ScreenMedia.isMinimumSize(
+        ScreenMediaType.XS,
+        currentWidth: MediaQuery.of(context).size.width,
+      ) ? FloatingActionButton(
+            child: const Icon(Icons.person_add),
+            onPressed: () {
+              endDrawerViewModel.setEndDrawerView(AddUser(), context);
+            }
+          ) : const SizedBox(),
     );
   }
 }

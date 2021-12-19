@@ -28,14 +28,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final LoginController _loginController = LoginController();
-  late FToast fToast;
-
-  @override
-  void initState() {
-    super.initState();
-    fToast = FToast();
-    fToast.init(context);
-  }
 
   @override
   Widget build(BuildContext context) {

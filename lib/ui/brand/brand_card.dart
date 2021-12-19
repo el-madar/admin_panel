@@ -1,13 +1,15 @@
+import 'package:admin_panel/model/brand.dart';
 import 'package:admin_panel/style/MyCard.dart';
 import 'package:admin_panel/utils/constants.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../widgets/button_with_icon.dart';
 
-class UserCard extends StatelessWidget {
-  const UserCard({Key? key}) : super(key: key);
+class BrandCard extends StatelessWidget {
+  BrandCard({Key? key,required this.brand}) : super(key: key);
+
+  Brand brand;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class UserCard extends StatelessWidget {
                   height: soBigSize,
                   width: soBigSize,
                   child: CircleAvatar(
-                      backgroundImage: NetworkImage(avatar)
+                      backgroundImage: NetworkImage("https://img.freepik.com/free-vector/coffee-shop-badge-vintage-style_1176-95.jpg?size=626&ext=jpg")
                   ),
                 ),
                 const SizedBox(width: soSmallSize,),
@@ -30,13 +32,13 @@ class UserCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Ahmed khaled",
+                      brand.name!,
                       textAlign: TextAlign.start,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.headline5,
                     ),
                     Text(
-                      "Admin",
+                      brand.type!,
                       textAlign: TextAlign.start,
                       style: Theme.of(context).textTheme.headline6,
                     ),

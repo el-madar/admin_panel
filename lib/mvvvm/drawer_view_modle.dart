@@ -4,6 +4,8 @@ import 'package:admin_panel/ui/home_screen/home_screen.dart';
 import 'package:admin_panel/ui/users/users_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../ui/brand/brands.dart';
+
 class DrawerViewModel with ChangeNotifier {
   late ValueNotifier<bool> isExtended = ValueNotifier(false);
 
@@ -21,7 +23,7 @@ class DrawerViewModel with ChangeNotifier {
       index: 1,
     ),
     DrawerModel(
-      screen: const BrandScreen(),
+      screen: Brands(),
       icon: Icons.store,
       title: 'brand',
       index: 2,

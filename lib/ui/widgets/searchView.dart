@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
+import '../../utils/constants.dart';
+
 class SearchView extends StatelessWidget {
   const SearchView({Key? key}) : super(key: key);
 
@@ -19,7 +21,7 @@ class SearchView extends StatelessWidget {
       width: ScreenMedia.isMinimumSize(
         ScreenMediaType.XS,
         currentWidth: MediaQuery.of(context).size.width,
-      ) ? MediaQuery.of(context).size.width : 300,
+      ) ? MediaQuery.of(context).size.width - 90  : 250,
       child: MyCard(
         paddingAll: 0,
         child: TextFormField(

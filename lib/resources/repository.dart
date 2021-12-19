@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:admin_panel/model/articles.dart';
+import 'package:admin_panel/model/brand.dart';
 import 'package:admin_panel/model/user.dart';
 import 'package:admin_panel/utils/end_boints.dart';
 import 'package:admin_panel/utils/strings.dart';
@@ -29,12 +30,12 @@ class Repository {
 
   /////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////
-  Future<List<Articles>> getArticles(String source) async {
-    var data = await apiProvider.getRequestAPI(
-      url: '${baseURL}articles?source=$source&apiKey=$apiKey',
-    );
-    return articlesFromJson(data);
-  }
+  // Future<List<Articles>> getArticles(String source) async {
+  //   var data = await apiProvider.getRequestAPI(
+  //     url: '${baseURL}articles?source=$source&apiKey=$apiKey',
+  //   );
+  //   return articlesFromJson(data);
+  // }
 
   Future<User> login({required LoginRequest loginRequest}) async {
     var responseData = await apiProvider.postRequestAPI(
@@ -46,7 +47,6 @@ class Repository {
     return user;
   }
 
-
   Future<bool> logout() async {
     var done = await apiProvider.postRequestAPI(
       url: EP_login,
@@ -56,6 +56,19 @@ class Repository {
       body: '',
     );
     return done;
+  }
+
+  /////////////////////////brands/////////////////////////////////
+  Future<List<Brand>> getBrands() async {
+
+    var data = await apiProvider.getRequestAPI(
+      url: EP_brands,
+      headers: {
+        'authorization':'Bearer ${user!.token!}'
+      },
+    );
+
+    return getBrandsFromJson(data['brands']);
   }
 
 

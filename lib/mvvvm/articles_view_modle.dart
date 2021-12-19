@@ -17,7 +17,7 @@ class ArticlesViewModel  with ChangeNotifier {
 
   void getArticlesTheNextWeb () async {
     try {
-      articlesNextWeb = await Repository().getArticles('the-next-web');
+      // articlesNextWeb = await Repository().getArticles('the-next-web');
     } on MyException catch (e) {
       // errors = e.messages;
     } catch (e) {
@@ -29,7 +29,7 @@ class ArticlesViewModel  with ChangeNotifier {
 
   void getArticlesAssociatedPress () async {
     try {
-      articlesNextWeb = await Repository().getArticles('associated-press');
+      // articlesNextWeb = await Repository().getArticles('associated-press');
     } on MyException catch (e) {
       // errors = e.messages;
     } catch (e) {
