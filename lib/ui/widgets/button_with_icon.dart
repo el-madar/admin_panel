@@ -22,7 +22,10 @@ class ButtonWithIcon extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30.0),
       ),
-      child: isLoading ? SpinKitThreeInOut(color: Theme.of(context).accentColor,size: 20,):Row(
+      child: isLoading ? SpinKitChasingDots(
+        color: Theme.of(context).primaryColor,
+        size: 20,
+      ):Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           iconData != null ? Icon(iconData) : Container(),

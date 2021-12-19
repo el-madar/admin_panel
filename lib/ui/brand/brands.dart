@@ -18,6 +18,7 @@ import '../users/add_user.dart';
 import '../widgets/button_with_icon.dart';
 import '../widgets/list_loading_view.dart';
 import '../widgets/searchView.dart';
+import 'add_brand.dart';
 import 'brand_card.dart';
 
 class Brands extends StatelessWidget {
@@ -93,9 +94,9 @@ class Brands extends StatelessWidget {
                                       .primaryColor,
                                   onClock: () {
                                     endDrawerViewModel.setEndDrawerView(
-                                        AddUser(), context);
+                                        AddBrand(), context);
                                   },
-                                  iconData: Icons.person_add_alt,
+                                  iconData: Icons.add_business_sharp,
                                   isLoading: false,),
                               ),
                             ],
@@ -135,7 +136,7 @@ class Brands extends StatelessWidget {
               ) ? FloatingActionButton(
                   child: const Icon(Icons.add_business_sharp),
                   onPressed: () {
-                    endDrawerViewModel.setEndDrawerView(AddUser(), context);
+                    endDrawerViewModel.setEndDrawerView(AddBrand(), context);
                   }
               ) : const SizedBox(),
             );
