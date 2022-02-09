@@ -4,7 +4,7 @@ import 'package:admin_panel/ui/home_screen/home_screen.dart';
 import 'package:admin_panel/ui/users/users_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../ui/brand/brands.dart';
+import '../ui/brand/brands_screen.dart';
 
 class DrawerViewModel with ChangeNotifier {
   late ValueNotifier<bool> isExtended = ValueNotifier(false);

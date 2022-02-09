@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 
+import '../mvvvm/drawer_view_modle.dart';
 import 'AppTheme.dart';
 
 class MyApp extends StatefulWidget {
@@ -22,6 +23,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
 
   AuthenticationBloc _authenticationBloc = AuthenticationBloc();
+  final DrawerViewModel drawerViewModel = DrawerViewModel();
 
 
   @override
@@ -54,7 +56,7 @@ class _MyAppState extends State<MyApp> {
                     return SplashScreen();
                   }
                   if (state is Authenticated) {
-                    return MainScreen();
+                    return MainScreen(drawerViewModel: drawerViewModel,);
                   }
                   if (state is Unauthenticated) {
                     return LoginScreen();

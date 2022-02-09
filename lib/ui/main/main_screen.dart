@@ -17,10 +17,12 @@ import 'package:provider/provider.dart';
 import 'mini_profile.dart';
 
 class MainScreen extends StatelessWidget {
-  MainScreen({Key? key}) : super(key: key);
+  MainScreen({Key? key,required this.drawerViewModel}) : super(key: key);
   final _scaffoldKey = GlobalKey<ScaffoldState>();
-  final DrawerViewModel drawerViewModel = DrawerViewModel();
+  DrawerViewModel drawerViewModel;
   final EndDrawerViewModel endDrawerViewModel = EndDrawerViewModel();
+
+
 
   @override
   Widget build(BuildContext context) {

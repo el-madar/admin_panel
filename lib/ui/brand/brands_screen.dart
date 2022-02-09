@@ -14,12 +14,14 @@ import '../../mvvvm/end_drawer_view_modle.dart';
 import '../../style/ScreenMedia.dart';
 import '../../utils/constants.dart';
 import '../../utils/dialogs.dart';
+import '../auth/forget_password.dart';
 import '../users/add_user.dart';
 import '../widgets/button_with_icon.dart';
 import '../widgets/list_loading_view.dart';
 import '../widgets/searchView.dart';
 import 'add_brand.dart';
 import 'brand_card.dart';
+import 'brand_screen.dart';
 
 class Brands extends StatelessWidget {
   Brands({Key? key}) : super(key: key);
@@ -121,7 +123,12 @@ class Brands extends StatelessWidget {
                       minItemWidth: 400,
                       children: List.generate(
                         model.brandsList.length, (index) =>
-                          BrandCard(brand: model.brandsList[index],),
+                          BrandCard(brand: model.brandsList[index],onClick: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const BrandScreen()),
+                            );
+                          },),
                       ),
                     ),
                   )
