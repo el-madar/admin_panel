@@ -26,7 +26,7 @@ class BrandCard extends StatelessWidget {
                     height: soBigSize,
                     width: soBigSize,
                     child: CircleAvatar(
-                        backgroundImage: NetworkImage("https://img.freepik.com/free-vector/coffee-shop-badge-vintage-style_1176-95.jpg?size=626&ext=jpg")
+                        backgroundImage: NetworkImage(avatar)
                     ),
                   ),
                   const SizedBox(width: soSmallSize,),

@@ -9,7 +9,7 @@ import 'package:responsive_grid_list/responsive_grid_list.dart';
 import '../../bloc/authentication/authentication_bloc.dart';
 import '../../bloc/authentication/authentication_event.dart';
 import '../../model/brand.dart';
-import '../../mvvvm/brand_view_model.dart';
+import '../../mvvvm/brand/brand_view_model.dart';
 import '../../mvvvm/end_drawer_view_modle.dart';
 import '../../style/ScreenMedia.dart';
 import '../../utils/constants.dart';
@@ -29,6 +29,7 @@ class Brands extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final BrandViewModel _brandController = BrandViewModel();
 
     final EndDrawerViewModel endDrawerViewModel =
@@ -44,6 +45,14 @@ class Brands extends StatelessWidget {
                 BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut());
               }
             }
+
+            if (model.successfulMessage != '') {
+              // Navigator.pop(context);
+              showSuccesToast(model.successfulMessage);
+              _brandController.resetBrandData();
+              _brandController.getBrands();
+            }
+
 
             return Scaffold(
               body: Column(

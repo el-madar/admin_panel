@@ -23,7 +23,7 @@ class ButtonWithIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(30.0),
       ),
       child: isLoading ? SpinKitChasingDots(
-        color: Theme.of(context).primaryColor,
+        color: Theme.of(context).accentColor,
         size: 20,
       ):Row(
         mainAxisAlignment: MainAxisAlignment.center,

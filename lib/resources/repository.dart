@@ -68,9 +68,20 @@ class Repository {
       },
     );
 
-    return getBrandsFromJson(data['brands']);
+    return getBrandsFromJson(data['brands']['data']);
   }
 
+  Future<Brand> addBrand({required Brand brandRequest}) async {
+    var responseData = await apiProvider.postRequestAPI(
+      url: EP_brands,
+      headers: {
+        'authorization':'Bearer ${user!.token!}'
+      },
+      body: json.encode(brandRequest.toJson()),
+    );
+    Brand brand = Brand.fromJson(responseData['brand']);
+    return brand;
+  }
 
 
   ///////////////////////////////////// data base
