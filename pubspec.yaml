@@ -63,6 +63,11 @@ dependencies:
   fluro: ^2.0.3
 
 
+
+  url_strategy: ^0.2.0
+
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

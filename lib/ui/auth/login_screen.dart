@@ -132,9 +132,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                               child:
                                                   Text(tr('forget_passwords')),
                                               onPressed: () {
-                                                Navigator.push(
+                                                Navigator.pushNamed(
                                                   context,
-                                                  MaterialPageRoute(builder: (context) => const ForgetPassword()),
+                                                  'forget_password',
                                                 );
                                               },
                                             )),
@@ -162,7 +162,8 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             );
           },
-        ));
+        ),
+    );
   }
 
   onFormSubmitted() {

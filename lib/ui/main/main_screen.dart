@@ -99,6 +99,7 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
             ),
+            endDrawerEnableOpenDragGesture: false,
           );
         },
       ),

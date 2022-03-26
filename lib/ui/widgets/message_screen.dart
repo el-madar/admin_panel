@@ -1,6 +1,6 @@
+import 'package:admin_panel/ui/help_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../help_widget.dart';
 
 class MessageScreen extends StatelessWidget {
   const MessageScreen({

@@ -1,5 +1,6 @@
 import 'package:admin_panel/app/AppNotifier.dart';
 import 'package:admin_panel/bloc/authentication/bloc.dart';
+import 'package:admin_panel/ui/auth/forget_password.dart';
 import 'package:admin_panel/ui/auth/login_screen.dart';
 import 'package:admin_panel/ui/main/main_screen.dart';
 import 'package:admin_panel/ui/splash_screen.dart';
@@ -73,6 +74,10 @@ class _MyAppState extends State<MyApp> {
                   return SplashScreen();
                 },
               ),
+              routes: {
+                'home': (context) => MainScreen(drawerViewModel: drawerViewModel,),
+                'forget_password':(context) => const ForgetPassword(),
+              },
             ),
           );
         },

@@ -70,7 +70,7 @@ class UsersScreen extends StatelessWidget {
             child: ResponsiveGridList(
               horizontalGridMargin: defaultPadding,
               verticalGridMargin: defaultPadding,
-              minItemWidth: 400,
+              minItemWidth: 350,
               children: List.generate(100, (index) => UserCard(),),
             ),
           )
